@@ -1,0 +1,30 @@
+name: image_proc_env
+channels:
+  - conda-forge
+dependencies:
+  # -- Python version --
+  - python=3.10
+
+  # -- Core dependencies --
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - numba                # <--- Add this line here
+
+  # -- Image processing libraries --
+  - scikit-image
+  - opencv
+  - pillow
+
+  # -- Jupyter Notebook --
+  - jupyterlab
+
+  # --- pip dependencies ---
+  - pip
+  - pip:
+      - imageio
+      - imageio-ffmpeg
+      - pyeer
+      - tqdm
+      - scikit-learn
