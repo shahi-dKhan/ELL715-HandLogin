@@ -10,15 +10,16 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 from pyeer.eer_info import get_eer_stats
 from pyeer.report import generate_eer_report
+from itertools import chain
 
 # -----------------------
 # CONFIG
 # -----------------------
 DATASET_PATH = "./ell715_assg4"
-SUBJECTS = [f"{i:02d}" for i in range(1, 17)]  # 16 subjects
+SUBJECTS = [f"{i:02d}" for i in chain(range(1, 3), range(9, 11))]
 GESTURES = ["Compass", "Piano", "Push", "UCDO"]
-GALLERY_SUBJECTS = [f"{i:02d}" for i in range(1, 9)]   # 01–08
-PROBE_SUBJECTS = [f"{i:02d}" for i in range(9, 17)]    # 09–16
+GALLERY_SUBJECTS = [f"{i:02d}" for i in range(1, 3)]   # 01–08
+PROBE_SUBJECTS = [f"{i:02d}" for i in range(9, 11)]    # 09–21
 RESULTS_DIR = "results"
 DESC_CACHE_DIR = os.path.join(RESULTS_DIR, "descriptors")
 os.makedirs(DESC_CACHE_DIR, exist_ok=True)
@@ -80,11 +81,17 @@ def load_depth_frames(subject, gesture, max_frames=None):
     return frames
 
 
+
+
+
 def estimate_background(depth_frames, num_bg_frames=10):
     if depth_frames.size == 0:
         return None
     num_bg = min(num_bg_frames, depth_frames.shape[0])
     return np.median(depth_frames[:num_bg], axis=0).astype(np.float32)
+
+
+
 
 
 # -----------------------
@@ -96,6 +103,8 @@ def _cache_dir_for(subject, gesture):
     return d
 
 
+
+
 def _load_npz_safe(path, key=None):
     # helper returning data[key] if key given, else returns the whole archive mapping
     with np.load(path, allow_pickle=True) as data:
@@ -105,18 +114,12 @@ def _load_npz_safe(path, key=None):
         return data[key].copy()
 
 
+
+
 # -----------------------
 # Descriptor Computation with Caching
 # -----------------------
 def compute_descriptors_variant(depth_frames, background, variant, subject, gesture, K=SUB_TUNNEL_K):
-    """
-    Compute descriptor for given variant.
-    
-    Caching strategy:
-    1. Per-frame base descriptors (from silhouette_tunnel) - frame_descriptors.npz
-    2. Per-frame morphology descriptors (from multichannel_descriptors) - morphology_descriptors_K{K}.npz
-    3. Final aggregated descriptor per variant - descriptor_{variant}.npz
-    """
     if depth_frames.size == 0:
         return None
 
@@ -125,88 +128,76 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
     # ----- 1) Check if final descriptor is already cached -----
     final_desc_path = os.path.join(desc_dir, f"descriptor_{variant}.npz")
     if os.path.exists(final_desc_path):
-        try:
-            descriptor = _load_npz_safe(final_desc_path, "descriptor")
-            tqdm.write(f"[CACHE] Loaded final descriptor for {variant}, Subject-{subject}, Gesture-{gesture}")
-            return descriptor
-        except Exception as e:
-            tqdm.write(f"[WARN] Failed loading final descriptor cache ({final_desc_path}): {e}. Will recompute.")
-            try:
-                os.remove(final_desc_path)
-            except Exception:
-                pass
+        tqdm.write(f"[CACHE] Found cached final descriptor for {variant}, Subject-{subject}, Gesture-{gesture}")
+        data = np.load(final_desc_path, allow_pickle=True)
+        descriptor = data["descriptor"]
+        data.close()
+        # print("Descriptor shape:", descriptor.shape)
+        return descriptor
 
     # ----- 2) Load or compute per-frame base descriptors (for Baseline, TemporalHierarchy, FirstFrame) -----
     frame_desc_path = os.path.join(desc_dir, "frame_descriptors.npz")
     frame_descriptors = None
-    
+
     if variant in ["Baseline", "TemporalHierarchy", "FirstFrame"]:
         if os.path.exists(frame_desc_path):
-            try:
-                frame_descriptors = _load_npz_safe(frame_desc_path, "frame_descriptors")
-                tqdm.write(f"[CACHE] Loaded per-frame descriptors for Subject-{subject}, Gesture-{gesture}")
-            except Exception as e:
-                tqdm.write(f"[WARN] Failed loading frame descriptors cache: {e}. Will recompute.")
-                try:
-                    os.remove(frame_desc_path)
-                except Exception:
-                    pass
-        
-        if frame_descriptors is None:
+            tqdm.write(f"[CACHE] Found per-frame descriptors for Subject-{subject}, Gesture-{gesture}")
+            data = np.load(frame_desc_path, allow_pickle=True)
+            frame_descriptors = data["frame_descriptors"]
+            data.close()
+        else:
             tqdm.write(f"[EXTRACT] Computing per-frame descriptors (silhouette_tunnel) for Subject-{subject}, Gesture-{gesture}")
             frame_descriptors = silhouette_tunnel(depth_frames, background)
-            try:
-                np.savez_compressed(frame_desc_path, frame_descriptors=frame_descriptors)
-                tqdm.write(f"[SAVED] Cached per-frame descriptors for Subject-{subject}, Gesture-{gesture}")
-            except Exception as e:
-                tqdm.write(f"[WARN] Could not save frame descriptors cache: {e}")
+            
+            np.savez_compressed(frame_desc_path, frame_descriptors=frame_descriptors)
+            tqdm.write(f"[SAVED] Cached per-frame descriptors for Subject-{subject}, Gesture-{gesture}")
+
+            sil_dir = os.path.join("results", "silhouettes", subject, gesture)
+            os.makedirs(sil_dir, exist_ok=True)
+            num_to_save = min(10, frame_descriptors.shape[0])  # Save only first 10 silhouettes
+            # for i in range(num_to_save):
+            #     sil_img = frame_descriptors[i]
+            #     # Normalize and convert to 8-bit image for saving
+            #     sil_img_norm = cv2.normalize(sil_img, None, 0, 255, cv2.NORM_MINMAX)
+            #     sil_img_uint8 = sil_img_norm.astype(np.uint8)
+            #     # out_path = os.path.join(sil_dir, f"silhouette_{i:03d}.png")
+            #     # cv2.imwrite(out_path, sil_img_uint8)
+            # tqdm.write(f"[VISUAL] Saved {num_to_save} silhouette PNGs for {subject}-{gesture} in {sil_dir}")
 
     # ----- 3) Load or compute morphology descriptors (for AdditionalTunnels) -----
+    print("Frame descriptors shape:", frame_descriptors.shape)
     morph_desc_path = os.path.join(desc_dir, f"morphology_descriptors_K{K}.npz")
     morph_descriptors = None
-    
     if variant == "AdditionalTunnels":
         if os.path.exists(morph_desc_path):
-            try:
-                morph_descriptors = _load_npz_safe(morph_desc_path, "morphology_descriptors")
-                tqdm.write(f"[CACHE] Loaded morphology descriptors K={K} for Subject-{subject}, Gesture-{gesture}")
-            except Exception as e:
-                tqdm.write(f"[WARN] Failed loading morphology descriptors cache: {e}. Will recompute.")
-                try:
-                    os.remove(morph_desc_path)
-                except Exception:
-                    pass
-        
-        if morph_descriptors is None:
+            tqdm.write(f"[CACHE] Found morphology descriptors K={K} for Subject-{subject}, Gesture-{gesture}")
+            data = np.load(morph_desc_path, allow_pickle=True)
+            morph_descriptors = data["morphology_descriptors"]
+            data.close()
+        else:
             tqdm.write(f"[EXTRACT] Computing morphology descriptors K={K} for Subject-{subject}, Gesture-{gesture}")
             morph_descriptors = multichannel_descriptors(depth_frames, background, K=K)
-            try:
-                np.savez_compressed(morph_desc_path, morphology_descriptors=morph_descriptors)
-                tqdm.write(f"[SAVED] Cached morphology descriptors for Subject-{subject}, Gesture-{gesture}")
-            except Exception as e:
-                tqdm.write(f"[WARN] Could not save morphology descriptors cache: {e}")
+            np.savez_compressed(morph_desc_path, morphology_descriptors=morph_descriptors)
+            tqdm.write(f"[SAVED] Cached morphology descriptors for Subject-{subject}, Gesture-{gesture}")
 
     # ----- 4) Compute the final aggregated descriptor based on variant -----
     descriptor = None
-    
+    tqdm.write(f"[INFO] Computing new descriptor for {variant}, Subject-{subject}, Gesture-{gesture}")
+
     if variant == "Baseline":
-        # Simple covariance of per-frame descriptors
         cov = np.cov(frame_descriptors)
         ut = cov[np.triu_indices_from(cov)]
         descriptor = ut.astype(np.float32)
 
     elif variant == "TemporalHierarchy":
-        # Hierarchical temporal covariance
         desc = temporal_hierar_cov(frame_descriptors)
         descriptor = np.asarray(desc, dtype=np.float32)
 
     elif variant == "AdditionalTunnels":
-        # Concatenate morphology descriptors
         descs_arr = [np.asarray(d, dtype=np.float32).ravel() for d in morph_descriptors]
         descriptor = np.concatenate(descs_arr).astype(np.float32)
 
     elif variant == "FirstFrame":
-        # Use only the first frame descriptor
         first_frame = depth_frames[:1]
         bg_first = np.median(first_frame, axis=0).astype(np.float32)
         F_first = silhouette_tunnel(first_frame, bg_first)
@@ -214,25 +205,31 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
         ut = cov[np.triu_indices_from(cov)]
         descriptor = ut.astype(np.float32)
 
+        # Optional: save first-frame silhouette too
+        sil_dir = os.path.join("results", "silhouettes", subject, gesture)
+        os.makedirs(sil_dir, exist_ok=True)
+        sil_img = F_first[0]
+        sil_img_norm = cv2.normalize(sil_img, None, 0, 255, cv2.NORM_MINMAX)
+        cv2.imwrite(os.path.join(sil_dir, "silhouette_first_frame.png"), sil_img_norm.astype(np.uint8))
+        tqdm.write(f"[VISUAL] Saved first-frame silhouette for {subject}-{gesture}")
+
     else:
         raise ValueError(f"Unknown variant: {variant}")
-    
-    # ----- 5) Cache the final aggregated descriptor -----
-    if descriptor is not None:
-        try:
-            np.savez_compressed(final_desc_path, descriptor=descriptor)
-            tqdm.write(f"[SAVED] Cached final descriptor for {variant}, Subject-{subject}, Gesture-{gesture}")
-        except Exception as e:
-            tqdm.write(f"[WARN] Could not save final descriptor cache: {e}")
-    
+
+    # ----- 5) Save final descriptor -----
+    np.savez_compressed(final_desc_path, descriptor=descriptor)
+    tqdm.write(f"[SAVED] Cached final descriptor for {variant}, Subject-{subject}, Gesture-{gesture}")
+
     return descriptor
+
 
 
 # -----------------------
 # Ablation Routine
 # -----------------------
 def run_full_ablation():
-    variants = ["Baseline", "TemporalHierarchy", "AdditionalTunnels", "FirstFrame"]
+    # variants = ["Baseline", "TemporalHierarchy", "AdditionalTunnels", "FirstFrame"]
+    variants = ["Baseline"]  # for quick testing
     results = {v: {} for v in variants}
 
     for variant in tqdm(variants, desc="Running Variants"):
@@ -300,28 +297,67 @@ def compute_eer_and_plot(per_gesture_map, variant):
         log_lines.append(f"Gesture: {gesture} | Variant: {variant} | EER: {eer:.4f}\n")
         tqdm.write(f"[RESULT] Gesture: {gesture} | Variant: {variant} | EER: {eer:.4f}")
 
+        # # Histogram
+        # plt.figure(figsize=(6, 4))
+        # plt.hist(genuine_scores, bins=min(50, len(np.unique(genuine_scores))), alpha=0.6, label='Genuine', density=True)
+        # plt.hist(impostor_scores, bins=min(50, len(np.unique(impostor_scores))), alpha=0.6, label='Impostor', density=True)
+        # plt.xlabel('Cosine Similarity')
+        # plt.ylabel('Density')
+        # plt.legend()
+        # plt.title(f"{gesture} ({variant}) EER={eer:.3f}")
+        # plt.tight_layout()
+        # plt.savefig(os.path.join(variant_dir, f"{gesture}_hist.png"), dpi=200)
+        # plt.close()
         # Histogram
-        plt.figure(figsize=(6, 4))
-        plt.hist(impostor_scores, bins=50, alpha=0.6, label='Impostor', density=True)
-        plt.hist(genuine_scores, bins=50, alpha=0.6, label='Genuine', density=True)
+    plt.figure(figsize=(6, 4))
+
+    def safe_hist(data, label):
+        if len(data) == 0:
+            tqdm.write(f"[WARN] No {label} scores to plot")
+            return False
+
+        data_min, data_max = np.min(data), np.max(data)
+        if not np.isfinite(data_min) or not np.isfinite(data_max):
+            tqdm.write(f"[WARN] {label} scores have NaN/Inf values")
+            return False
+
+        data_range = data_max - data_min
+        if data_range < 1e-6:
+            tqdm.write(f"[WARN] Skipping {label} histogram: data range too small ({data_min:.6f}–{data_max:.6f})")
+            return False
+
+        unique_count = len(np.unique(data))
+        num_bins = min(50, unique_count)
+        plt.hist(data, bins=num_bins, alpha=0.6, label=label, density=True)
+        return True
+
+
+    ok1 = safe_hist(impostor_scores, "Impostor")
+    ok2 = safe_hist(genuine_scores, "Genuine")
+
+    if ok1 or ok2:
         plt.xlabel('Cosine Similarity')
         plt.ylabel('Density')
         plt.legend()
         plt.title(f"{gesture} ({variant}) EER={eer:.3f}")
         plt.tight_layout()
         plt.savefig(os.path.join(variant_dir, f"{gesture}_hist.png"), dpi=200)
-        plt.close()
+    else:
+        tqdm.write(f"[SKIP] Histogram skipped for {gesture} ({variant})")
+    plt.close()
+
 
         # DET Plot
-        report_path = os.path.join(variant_dir, f"{gesture}_DET.png")
-        try:
-            generate_eer_report([eer_stats], report_path)
-        except Exception as e:
-            tqdm.write(f"[WARN] generate_eer_report failed for {gesture} {variant}: {e}")
+    report_path = os.path.join(variant_dir, f"{gesture}_DET.png")
+    try:
+        generate_eer_report([eer_stats], report_path)
+    except Exception as e:
+        tqdm.write(f"[WARN] generate_eer_report failed for {gesture} {variant}: {e}")
 
     # append summary lines to summary file
     with open(SUMMARY_LOG, "a") as f:
         f.writelines(log_lines)
+
 
 
 # -----------------------
@@ -329,9 +365,11 @@ def compute_eer_and_plot(per_gesture_map, variant):
 # -----------------------
 if __name__ == "__main__":
     results = run_full_ablation()
-
-    for variant in ["Baseline", "TemporalHierarchy", "AdditionalTunnels", "FirstFrame"]:
-        gesture_map = build_per_gesture_map(results, variant)
-        compute_eer_and_plot(gesture_map, variant)
+    variant = "Baseline"
+    # for variant in ["Baseline", "TemporalHierarchy", "AdditionalTunnels", "FirstFrame"]:
+    gesture_map = build_per_gesture_map(results, variant)
+    compute_eer_and_plot(gesture_map, variant)
 
     tqdm.write(f"\nAll results stored in '{RESULTS_DIR}' directory.\n")
+    
+    

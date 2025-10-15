@@ -2,7 +2,9 @@ import numpy as np
 from scipy.ndimage import label, generate_binary_structure
 from tqdm import tqdm
 from numba import njit, prange
-
+from numba import set_num_threads, get_num_threads
+set_num_threads(8)  # or however many logical cores you have
+print("Using", get_num_threads(), "threads")
 
 # ===============================================================
 # --- 1️⃣ Directional Distance Computation (Numba-accelerated) ---
