@@ -126,10 +126,6 @@ def compute_temporal_directions(silhouettes):
 # --- 3️⃣ Main Silhouette Tunnel Extraction ---
 # ==============================================
 def silhouette_tunnel(depth_frames, background, threshold=20):
-    """
-    Compute silhouette tunnel and 14D features (same logic, now Numba-accelerated).
-    Returns normalized feature matrix F of shape (14, N).
-    """
     T, H, W = depth_frames.shape
     silhouettes = np.zeros((T, H, W), dtype=bool)
 
@@ -137,6 +133,9 @@ def silhouette_tunnel(depth_frames, background, threshold=20):
     for i in range(T):
         diff = np.abs(depth_frames[i] - background)
         silhouettes[i] = diff > threshold
+
+
+
 
     # --- Step 2: Keep largest connected component per frame ---
     struct = generate_binary_structure(2, 2)
@@ -147,17 +146,27 @@ def silhouette_tunnel(depth_frames, background, threshold=20):
         largest = np.argmax(np.bincount(labeled.flat)[1:]) + 1
         silhouettes[i] = (labeled == largest)
 
+
+
+
     # --- Step 3: Temporal run-lengths ---
     dt_plus, dt_minus = compute_temporal_directions(silhouettes)
 
+
+
+
     # --- Step 4: Feature extraction ---
     features = []
+
 
     for i in tqdm(range(T), desc="Feature extraction", unit="frame"):
         mask = silhouettes[i]
         indices = np.argwhere(mask)
         if len(indices) == 0:
             continue
+
+
+
 
         # Compute directional distances for this frame
         dE, dW, dN, dS, dNE, dNW, dSE, dSW = compute_directional_distances(mask)
@@ -171,9 +180,26 @@ def silhouette_tunnel(depth_frames, background, threshold=20):
             ]
             features.append(f)
 
+
+
+
+
     # --- Step 5: Normalize features ---
     F = np.array(features).T
     F_min = F.min(axis=1, keepdims=True)
     F_max = F.max(axis=1, keepdims=True)
     F = (F - F_min) / (F_max - F_min + 1e-6)
-    return F
+    
+    print(f"[INFO] Extracted {F.shape[1]} feature vectors.")
+    print(f"Total number of pixels in image" f": {H*W*T}")
+    return F, silhouettes
+
+
+
+
+# Just sit down, and think for a while
+# We are returning a silhouette tunnel
+# We are retuning the points which are part of the silhouette
+# But the first things comes is, are we able to visualize the silhouette tunnel
+# If we are able to visualize the silhouette tunnel, then we can move forward
+# If we are not able to visualize the silhouette tunnel, then we need to think again

@@ -1,0 +1,60 @@
+Compass | Baseline | EER=0.2728
+Piano | Baseline | EER=0.3013
+Push | Baseline | EER=0.2846
+UCDO | Baseline | EER=0.2947
+Compass | Baseline | EER=0.3158
+Piano | Baseline | EER=0.3200
+Push | Baseline | EER=0.2400
+UCDO | Baseline | EER=0.3500
+Compass | TemporalHierarchy | EER=0.3158
+Piano | TemporalHierarchy | EER=0.3500
+Push | TemporalHierarchy | EER=0.2400
+UCDO | TemporalHierarchy | EER=0.3300
+Compass | AdditionalTunnels | EER=0.2000
+Piano | AdditionalTunnels | EER=0.2800
+Push | AdditionalTunnels | EER=0.2000
+UCDO | AdditionalTunnels | EER=0.2800
+Compass | Baseline | EER=0.3158
+Piano | Baseline | EER=0.3200
+Push | Baseline | EER=0.2400
+UCDO | Baseline | EER=0.3500
+Compass | TemporalHierarchy | EER=0.3158
+Piano | TemporalHierarchy | EER=0.3500
+Push | TemporalHierarchy | EER=0.2400
+UCDO | TemporalHierarchy | EER=0.3300
+Compass | AdditionalTunnels | EER=0.2000
+Piano | AdditionalTunnels | EER=0.2800
+Push | AdditionalTunnels | EER=0.2000
+UCDO | AdditionalTunnels | EER=0.2800
+Gesture: UCDO       | Variant: Baseline             | EER: 0.3500
+Gesture: UCDO       | Variant: TemporalHierarchy    | EER: 0.3300
+Gesture: UCDO       | Variant: AdditionalTunnels    | EER: 0.2800
+Gesture: UCDO       | Variant: Baseline             | EER: 0.3500
+Gesture: Compass | Variant: Baseline | EER: 0.3158
+Gesture: Piano | Variant: Baseline | EER: 0.3200
+Gesture: Push | Variant: Baseline | EER: 0.2400
+Gesture: UCDO | Variant: Baseline | EER: 0.3500
+Gesture: Compass | Variant: Baseline | EER: 0.3158
+Gesture: Piano | Variant: Baseline | EER: 0.3200
+Gesture: Push | Variant: Baseline | EER: 0.2400
+Gesture: UCDO | Variant: Baseline | EER: 0.3500
+Gesture: Compass | Variant: Baseline | EER: 0.3158
+Gesture: Piano | Variant: Baseline | EER: 0.3200
+Gesture: Push | Variant: Baseline | EER: 0.2400
+Gesture: UCDO | Variant: Baseline | EER: 0.3500
+Gesture: Compass | Variant: Baseline | EER: 0.3158
+Gesture: Piano | Variant: Baseline | EER: 0.3200
+Gesture: Push | Variant: Baseline | EER: 0.2400
+Gesture: UCDO | Variant: Baseline | EER: 0.3500
+Gesture: Compass | Variant: Baseline | EER: 0.2732
+Gesture: Piano | Variant: Baseline | EER: 0.3055
+Gesture: Push | Variant: Baseline | EER: 0.2775
+Gesture: UCDO | Variant: Baseline | EER: 0.2915
+Gesture: Compass | Variant: TemporalHierarchy | EER: 0.2608
+Gesture: Piano | Variant: TemporalHierarchy | EER: 0.3038
+Gesture: Push | Variant: TemporalHierarchy | EER: 0.2700
+Gesture: UCDO | Variant: TemporalHierarchy | EER: 0.2612
+Gesture: Compass | Variant: AdditionalTunnels | EER: 0.2188
+Gesture: Piano | Variant: AdditionalTunnels | EER: 0.2875
+Gesture: Push | Variant: AdditionalTunnels | EER: 0.2479
+Gesture: UCDO | Variant: AdditionalTunnels | EER: 0.2350

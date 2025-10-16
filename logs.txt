@@ -1,0 +1,26 @@
+[RESULT] Gesture: Compass | Variant: Baseline | EER: 0.3158
+[WARN] Could not generate DET for Compass: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Piano | Variant: Baseline | EER: 0.3200
+[WARN] Could not generate DET for Piano: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Push | Variant: Baseline | EER: 0.2400
+[WARN] Could not generate DET for Push: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: UCDO | Variant: Baseline | EER: 0.3500
+[WARN] Could not generate DET for UCDO: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Compass | Variant: TemporalHierarchy | EER: 0.3158
+[WARN] Could not generate DET for Compass: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Piano | Variant: TemporalHierarchy | EER: 0.3500
+[WARN] Could not generate DET for Piano: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Push | Variant: TemporalHierarchy | EER: 0.2400
+[WARN] Could not generate DET for Push: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: UCDO | Variant: TemporalHierarchy | EER: 0.3300
+[WARN] Could not generate DET for UCDO: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Compass | Variant: AdditionalTunnels | EER: 0.2000
+[WARN] Could not generate DET for Compass: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Piano | Variant: AdditionalTunnels | EER: 0.2800
+[WARN] Could not generate DET for Piano: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: Push | Variant: AdditionalTunnels | EER: 0.2000
+[WARN] Could not generate DET for Push: generate_eer_report() missing 1 required positional argument: 'save_file'
+[RESULT] Gesture: UCDO | Variant: AdditionalTunnels | EER: 0.2800
+[WARN] Could not generate DET for UCDO: generate_eer_report() missing 1 required positional argument: 'save_file'
+
+All results stored in 'results' directory.
