@@ -1,0 +1,243 @@
+\input{preamble}
+\input{format}
+\input{commands}
+
+\begin{document}
+
+\begin{Large}
+    \textsf{\textbf{ELL715 - Assignment 4}}
+
+    % This is an even greater subtitle
+\end{Large}
+
+\vspace{1ex}
+
+\textsf{\textbf{Student1:}} \text{Shahid Khan}, 2022EE11163\\
+\textsf{\textbf{Student2:}} \text{Raaginee D Turki}, 2022EE16164\\
+\textsf{\textbf{Professor:}} \text{Monika Agrawal}\\
+\textsf{\textbf{Date:}} \today
+\vspace{2ex}
+
+
+% =================================================
+
+
+\section{Part1: Paper Implementation}
+
+\subsection{Implementation of Silhouette Tunnel}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../ell715_assg4/01/Compass/Test001/LSB/LSB2.png}
+        \caption{original-Compass}
+        \label{fig:image1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png}
+        \caption{silhouette mask - Compass}
+        \label{fig:image2}
+    \end{subfigure}
+    \caption{Extraction of silhouette mask from compass}
+    \label{fig:two_images}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../ell715_assg4/01/Piano/Test001/LSB/LSB2.png}
+        \caption{original-Piano}
+        \label{fig:image3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png}
+        \caption{silhouette mask - Piano}
+        \label{fig:image4}
+    \end{subfigure}
+    \caption{Extraction of silhouette mask from piano}
+    \label{fig:part1_piano}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../ell715_assg4/01/Push/Test001/LSB/LSB2.png}
+        \caption{original-Push}
+        \label{fig:image5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png}
+        \caption{silhouette mask - Push}
+        \label{fig:image6}
+    \end{subfigure}
+    \caption{Extraction of silhouette mask from Push}
+    \label{fig:part1_push}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png}
+        \caption{original-UCDO}
+        \label{fig:image7}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png}
+        \caption{silhouette mask - UCDO}
+        \label{fig:image8}
+    \end{subfigure}
+    \caption{Extraction of silhouette mask from UCDO}
+    \label{fig:part1_ucdo}
+\end{figure}
+
+Each pixel within the silhouette tunnel is represented by a 14-dimensional feature vector:
+
+\[
+\mathbf{f} =
+\begin{bmatrix}
+x,\, y,\, t,\, z,\,
+d_E,\, d_W,\, d_N,\, d_S,\,
+d_{NE},\, d_{NW},\, d_{SE},\, d_{SW},\,
+dT^{+},\, dT^{-}
+\end{bmatrix}^{T}
+\]
+
+where:
+\begin{itemize}
+    \item $x, y, t$ denote the spatial and temporal coordinates of the pixel,  
+    \item $z$ is the depth value,  
+    \item $d_{E}, d_{W}, d_{N}, d_{S}, d_{NE}, d_{NW}, d_{SE}, d_{SW}$ represent directional distances from the pixel to the nearest background boundary in the eight cardinal directions, and  
+    \item $dT^{+}, dT^{-}$ denote the forward and backward temporal persistence of the silhouette pixel across time.  
+\end{itemize}
+
+Directional distances and temporal runs are efficiently computed using Numba-accelerated kernels for parallel processing.
+
+All feature vectors from the sequence are collected into a feature matrix:
+
+\[
+\mathbf{F} =
+\begin{bmatrix}
+\mathbf{f}_1 & \mathbf{f}_2 & \dots & \mathbf{f}_N
+\end{bmatrix}
+\in \mathbb{R}^{14 \times N}
+\]
+
+and are normalized feature-wise to the range $[0, 1]$ as:
+
+\[
+\mathbf{F}_{\text{norm}} = \frac{\mathbf{F} - \mathbf{F}_{\min}}{\mathbf{F}_{\max} - \mathbf{F}_{\min} + \epsilon}
+\]
+
+where $\epsilon$ is a small constant (e.g., $10^{-6}$) to avoid division by zero.
+
+
+\subsection{Extraction of Covariance Matrix}
+The silhouette tunnel provides us with a rich representation of the pixel features over time. To analyze the variability and relationships between these features, we compute the covariance matrix of the normalized feature matrix:
+
+\[
+\mathbf{C} = \frac{1}{N-1} \mathbf{F}_{\text{norm}} \mathbf{F}_{\text{norm}}^{T}
+\]
+
+where $\mathbf{C} \in \mathbb{R}^{14 \times 14}$ is the covariance matrix capturing the pairwise feature correlations across all pixels in the silhouette tunnel across all the frames.
+
+
+
+\text{\textbf{Note: }} In the paper, the denominator of the above equation is given as $N$. However, to obtain an unbiased estimate of the covariance, we use $N-1$ in our implementation.
+
+We then just take the upper triangular part of the covariance matrix (including the diagonal) and vectorize it to form our final feature descriptor for the video sequence:
+
+\[
+\mathbf{d} = \text{vec}(\mathbf{C}_{\text{upper}})
+\]
+
+where $\mathbf{d} \in \mathbb{R}^{105}$ is the final feature descriptor capturing the relationships between the pixel features over time.
+
+
+
+\subsection{Temporal Hierarchical Covariance Descriptor}
+
+
+\vspace{0.5em}
+\noindent
+\textbf{Hierarchical Temporal Segmentation:}
+The sequence is divided into multiple temporal segments at different levels of granularity.  
+For a hierarchy depth of \( L = 3 \), the division results in:
+\[
+1 + 2 + 4 = 7 \text{ temporal partitions.}
+\]
+Each level \( \ell \in \{1, 2, \dots, L\} \) contains \( 2^{\ell-1} \) equal-length temporal segments.
+
+For a given level \(\ell\) and segment \(s\), the subset of feature vectors belonging to that temporal range is denoted:
+\[
+F_{\ell, s} = \{ f_n \;|\; t_n \in [s/S_\ell, (s+1)/S_\ell) \}, \quad \text{where } S_\ell = 2^{\ell-1}
+\]
+
+\vspace{0.5em}
+\noindent
+\textbf{Covariance Representation per Segment:}
+For each temporal segment \(F_{\ell,s}\), we compute its empirical covariance matrix:
+\[
+C_{\ell,s} = \frac{1}{N_{\ell,s} - 1} \sum_{n=1}^{N_{\ell,s}} (f_n - \mu_{\ell,s})(f_n - \mu_{\ell,s})^{\top}
+\]
+where
+\[
+\mu_{\ell,s} = \frac{1}{N_{\ell,s}} \sum_{n=1}^{N_{\ell,s}} f_n
+\]
+is the mean feature vector within that segment, and \(N_{\ell,s}\) is the number of samples in that segment.
+
+\vspace{0.5em}
+\noindent
+\textbf{Compact Covariance Encoding:}
+Since \( C_{\ell,s} \in \mathbb{R}^{D \times D} \) is symmetric, only its upper-triangular elements are retained to avoid redundancy.  
+The unique elements are vectorized as:
+\[
+C_{\ell,s}^{ut} = \text{vec}_{ut}(C_{\ell,s}) \in \mathbb{R}^{\frac{D(D+1)}{2}}
+\]
+where \( \text{vec}_{ut}(\cdot) \) denotes concatenation of the upper-triangular entries.
+
+\vspace{0.5em}
+\noindent
+\textbf{Final Descriptor:}
+All such upper-triangular covariance vectors are concatenated across the hierarchy to form the final temporal hierarchical descriptor:
+\[
+\text{Descriptor}_{TH} = [\, C_{1,1}^{ut},\; C_{2,1}^{ut},\; C_{2,2}^{ut},\; \dots,\; C_{L,2^{L-1}}^{ut} \,] \in \mathbb{R}^{(2^L - 1) \cdot \frac{D(D+1)}{2}}
+\]
+
+For \( D = 14 \) and \( L = 3 \), this yields:
+\[
+\text{Descriptor}_{TH} \in \mathbb{R}^{7 \times 105} = \mathbb{R}^{735}
+\]
+
+\vspace{0.5em}
+\noindent
+\textbf{Implementation Note:}
+Numba’s \texttt{njit(parallel=True)} acceleration is used to parallelize computations, yielding a 5–10× runtime speedup.  
+
+\vspace{1em}
+\noindent
+
+% =================================================
+
+% \newpage
+
+% \vfill
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

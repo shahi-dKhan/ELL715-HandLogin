@@ -134,33 +134,49 @@ def _extract_14d_features_for_mask_sequence(depth_frames, masks, dt_plus=None, d
 
 
 def _process_sub_tunnel(task_args):
-    k, tunnel, depth_frames, dt_plus, dt_minus = task_args
-    # If tunnel empty -> zero descriptor handled by caller
-    F_sub = _extract_14d_features_for_mask_sequence(depth_frames, tunnel, dt_plus=dt_plus, dt_minus=dt_minus)
+    k, tunnel, depth_frames, dt_plus, dt_minus, subject, gesture, test_folder = task_args
+    F_sub = _extract_14d_features_for_mask_sequence(
+        depth_frames, tunnel, dt_plus=dt_plus, dt_minus=dt_minus
+    )
     if F_sub.shape[1] == 0:
         return (k, None)
+    os.makedirs("results/features", exist_ok=True)
+    save_path = os.path.join(
+        "results/features",
+        f"{subject}_{gesture}_{test_folder}_sub{k+1}_features.npz"
+    )
+    np.savez_compressed(save_path, features=F_sub)
     desc_sub = temporal_hierar_cov(F_sub)
     return (k, np.asarray(desc_sub, dtype=np.float32))
 
 
+
 def multichannel_descriptors(subject, gesture, test_folder, depth_frames, background, F_full=None, desc_full=None,
-                                       K=3, min_region_size=20, silhouette_threshold=20,
+                                       full_mask=None, K=3, min_region_size=20, silhouette_threshold=20,
                                        max_workers=None, verbose=False):
 
     T, H, W = depth_frames.shape
 
     # silhouettes
-    silhouettes = np.zeros((T, H, W), dtype=bool)
-    for t in range(T):
-        diff = np.abs(depth_frames[t] - background)
-        silhouettes[t] = diff > silhouette_threshold
-    struct = generate_binary_structure(2, 2)
-    for t in range(T):
-        labeled, num = label(silhouettes[t], structure=struct)
-        if num == 0:
-            continue
-        largest = np.argmax(np.bincount(labeled.flat)[1:]) + 1
-        silhouettes[t] = (labeled == largest)
+    T, H, W = depth_frames.shape
+
+    # --- 1️⃣ If no full_mask provided, compute it from background ---
+    if full_mask is None:
+        silhouettes = np.zeros((T, H, W), dtype=bool)
+        for t in range(T):
+            diff = np.abs(depth_frames[t] - background)
+            silhouettes[t] = diff > silhouette_threshold
+
+        struct = generate_binary_structure(2, 2)
+        for t in range(T):
+            labeled, num = label(silhouettes[t], structure=struct)
+            if num == 0:
+                continue
+            largest = np.argmax(np.bincount(labeled.flat)[1:]) + 1
+            silhouettes[t] = (labeled == largest)
+    else:
+        # ✅ Use provided full mask
+        silhouettes = full_mask.astype(bool)
 
     # full descriptor
     if desc_full is None:
@@ -185,7 +201,7 @@ def multichannel_descriptors(subject, gesture, test_folder, depth_frames, backgr
 
     tasks = []
     for k, tunnel in enumerate(sub_tunnels):
-        tasks.append((k, tunnel, depth_frames, dt_plus, dt_minus))
+        tasks.append((k, tunnel, depth_frames, dt_plus, dt_minus, subject, gesture, test_folder))
 
     results = [None] * K
     # Use ThreadPoolExecutor so Numba kernels (which release GIL) can run concurrently

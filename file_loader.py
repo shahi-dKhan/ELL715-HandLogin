@@ -75,5 +75,5 @@ def load_depth_frames(subject, gesture, test_folder, max_frames=None, base_path=
             break
 
     frames = np.stack(frames, axis=0)
-    tqdm.write(f"[DONE] {subject}-{gesture}-{test_folder}: {frames.shape[0]} frames loaded, background ready.")
+    # tqdm.write(f"[DONE] {subject}-{gesture}-{test_folder}: {frames.shape[0]} frames loaded, background ready.")
     return frames, background

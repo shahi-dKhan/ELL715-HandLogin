@@ -97,22 +97,13 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
             # tqdm.write(f"[EXTRACT] Computing per-frame descriptors (silhouette_tunnel) for {subject}-{gesture}-{test_folder}")
             frame_descriptors, masks = silhouette_tunnel(depth_frames, background, threshold=THRESHOLD)
 
-            tqdm.write(f"[DEBUG] {subject}-{gesture}-{test_folder}: silhouette mean={np.mean(frame_descriptors):.4f}, "
-                       f"std={np.std(frame_descriptors):.6f}, shape={frame_descriptors.shape}")
+            # tqdm.write(f"[DEBUG] {subject}-{gesture}-{test_folder}: silhouette mean={np.mean(frame_descriptors):.4f}, "
+            #            f"std={np.std(frame_descriptors):.6f}, shape={frame_descriptors.shape}")
 
             np.savez_compressed(frame_desc_path, frame_descriptors=frame_descriptors)
-            # tqdm.write(f"[SAVED] Cached per-frame descriptors for {subject}-{gesture}-{test_folder}")
-
-            # 💾 Save silhouette visualizations
-            # if masks is not None:
-            #     sil_dir = os.path.join("results", "silhouettes", subject, gesture, test_folder)
-            #     os.makedirs(sil_dir, exist_ok=True)
-            #     for i in range(masks.shape[0]):
-            #         mask_img = masks[i].astype(np.uint8) * 255
-            #         cv2.imwrite(os.path.join(sil_dir, f"silhouette_{i:03d}.png"), mask_img)
-            #     tqdm.write(f"[VISUAL] Saved {masks.shape[0]} silhouette masks for {subject}-{gesture}-{test_folder}")
-
-
+            
+                        
+            
     # ----- 3) Morphology descriptors (AdditionalTunnels) -----
     morph_desc_path = os.path.join(desc_dir, f"morphology_descriptors_K{K}.npz")
     morph_descriptors = None
@@ -122,11 +113,11 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
             morph_descriptors = _load_npz_safe(morph_desc_path, "morphology_descriptors")
         else:
             tqdm.write(f"[EXTRACT] Computing morphology descriptors K={K} for {subject}-{gesture}-{test_folder}")
-            morph_descriptors = multichannel_descriptors(subject, gesture, test_folder, depth_frames, background, desc_full=frame_descriptors, K=K)
+            morph_descriptors = multichannel_descriptors(subject, gesture, test_folder, depth_frames, background, desc_full=frame_descriptors, full_mask=masks, K=K)
             np.savez_compressed(morph_desc_path, morphology_descriptors=morph_descriptors)
             tqdm.write(f"[SAVED] Cached morphology descriptors for {subject}-{gesture}-{test_folder}")
             
-            
+           
     # ----- 4) Compute the final aggregated descriptor -----
     # tqdm.write(f"[INFO] Computing new descriptor for {variant}, {subject}-{gesture}-{test_folder}")
     descriptor = None
@@ -136,20 +127,22 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
             tqdm.write(f"[WARN] Transposing frame_descriptors from {frame_descriptors.shape}")
             frame_descriptors = frame_descriptors.T
 
-        mu = np.mean(frame_descriptors, axis=1, keepdims=True)
-        F_centered = frame_descriptors - mu
-        C = (F_centered @ F_centered.T) / frame_descriptors.shape[1]
+        # mu = np.mean(frame_descriptors, axis=1, keepdims=True)
+        # F_centered = frame_descriptors - mu
+        # C = (F_centered @ F_centered.T) / frame_descriptors.shape[1]
+        # descriptor = C[np.triu_indices_from(C)].astype(np.float32)'
+        C = np.cov(frame_descriptors)
         descriptor = C[np.triu_indices_from(C)].astype(np.float32)
 
-        tqdm.write(f"[DEBUG] Covariance descriptor mean={np.mean(descriptor):.6f}, "
-                   f"std={np.std(descriptor):.6f}, shape={descriptor.shape}")
+        # tqdm.write(f"[DEBUG] Covariance descriptor mean={np.mean(descriptor):.6f}, "
+        #            f"std={np.std(descriptor):.6f}, shape={descriptor.shape}")
 
     elif variant == "TemporalHierarchy":
         descriptor = np.asarray(temporal_hierar_cov(frame_descriptors), dtype=np.float32)
 
     elif variant == "AdditionalTunnels":
-        descs_arr = [np.asarray(d, dtype=np.float32).ravel() for d in morph_descriptors]
-        descriptor = np.concatenate(descs_arr).astype(np.float32)
+        descriptor = [np.asarray(d, dtype=np.float32).ravel() for d in morph_descriptors]
+
 
     elif variant == "FirstFrame":
         first_frame = depth_frames[:1]
@@ -192,7 +185,7 @@ def run_full_ablation():
                 for test_folder in test_folders:
                     try:
                         frames, background = load_depth_frames(subject, gesture, test_folder, MAX_FRAMES)
-                        tqdm.write(f"[DEBUG] {subject}-{gesture}-{test_folder}: frames={frames.shape}")
+                        # tqdm.write(f"[DEBUG] {subject}-{gesture}-{test_folder}: frames={frames.shape}")
                         desc = compute_descriptors_variant(frames, background, variant,
                                                            subject, gesture, test_folder)
                         results[variant][f"{subject}-{gesture}-{test_folder}"] = desc
@@ -220,8 +213,11 @@ def build_per_gesture_map(results, variant):
         if len(parts) < 3:
             continue
         subject, gesture, test_folder = parts[0], parts[1], parts[2]
-        per_gesture[gesture][subject].append(np.asarray(desc).ravel())
+
+        # Store descriptors as-is (can be list or array)
+        per_gesture[gesture][subject].append(desc)
     return per_gesture
+
 
 
 def compute_eer_and_plot(per_gesture_map, variant):
@@ -233,14 +229,27 @@ def compute_eer_and_plot(per_gesture_map, variant):
         genuine_scores, impostor_scores = [], []
 
         subjects = list(subj_map.keys())
-        for i, subj_i in enumerate(subjects):
-            for j, subj_j in enumerate(subjects):
+        for subj_i in subjects:
+            for subj_j in subjects:
                 for desc_i in subj_map[subj_i]:
                     for desc_j in subj_map[subj_j]:
-                        sim = 1 - cosine_distances(desc_i.reshape(1, -1), desc_j.reshape(1, -1))[0, 0]
-                        if subj_i == subj_j:
-                            genuine_scores.append(sim)
+
+                        # ---------- Handle multi-tunnel fusion ----------
+                        if isinstance(desc_i, list) and isinstance(desc_j, list):
+                            sims = []
+                            for di, dj in zip(desc_i, desc_j):
+                                sims.append(1 - cosine_distances(di.reshape(1, -1), dj.reshape(1, -1))[0, 0])
+                            sim = np.mean(sims)  # average cosine similarity
                         else:
+                            sim = 1 - cosine_distances(
+                                np.asarray(desc_i).reshape(1, -1),
+                                np.asarray(desc_j).reshape(1, -1)
+                            )[0, 0]
+                        # ------------------------------------------------
+
+                        if subj_i == subj_j and subj_i in GALLERY_SUBJECTS:
+                            genuine_scores.append(sim)
+                        elif subj_i != subj_j and subj_i in PROBE_SUBJECTS and subj_j in GALLERY_SUBJECTS:
                             impostor_scores.append(sim)
 
         if not genuine_scores or not impostor_scores:
@@ -265,13 +274,13 @@ def compute_eer_and_plot(per_gesture_map, variant):
         plt.close()
 
         try:
-            generate_eer_report([eer_stats], ids=[gesture], save_file=os.path.join(variant_dir, f"{gesture}_DET.csv"))
+            generate_eer_report([eer_stats], ids=[gesture],
+                                save_file=os.path.join(variant_dir, f"{gesture}_DET.csv"))
         except Exception as e:
             tqdm.write(f"[WARN] Could not generate DET for {gesture}: {e}")
 
     with open(SUMMARY_LOG, "a") as f:
         f.writelines(log_lines)
-
 
 # -----------------------
 # Main Execution
@@ -285,4 +294,4 @@ if __name__ == "__main__":
 
     tqdm.write(f"\nAll results stored in '{RESULTS_DIR}' directory.\n")
     
-    
+   

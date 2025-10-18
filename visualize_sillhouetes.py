@@ -39,7 +39,7 @@ def load_depth_sequence(msb_dir, lsb_dir):
         depth = (msb.astype(np.uint16) << 8) + lsb.astype(np.uint16)
         frames.append(depth.astype(np.float32))
         frame_paths.append((msb_path, lsb_path))
-
+        # print("Loaded_frame shape", depth.shape)
     return np.stack(frames, axis=0), frame_paths  # (T, H, W), [(MSB, LSB), ...]
 
 
@@ -60,8 +60,7 @@ def visualize_silhouettes(base_dir, subject='01', gesture='Push', test='Test001'
     print(f"Loaded {frames.shape[0]} frames of size {frames.shape[1:]}")
 
     # Compute background (median)
-    background = np.broadcast_to(frames[0], frames.shape)  # Using first frame as background
-
+    background = frames[0]
     # Compute silhouettes
     F, silhouettes = silhouette_tunnel(frames, background, threshold)
     print(f"Silhouettes computed: shape = {silhouettes.shape}")
@@ -91,4 +90,4 @@ def visualize_silhouettes(base_dir, subject='01', gesture='Push', test='Test001'
 
 if __name__ == "__main__":
     base_dir = "./ell715_assg4"  # Change path if necessary
-    visualize_silhouettes(base_dir, subject="01", gesture="Compass", test="Test001", threshold=50)
+    visualize_silhouettes(base_dir, subject="01", gesture="Compass", test="Test001", threshold=10)
