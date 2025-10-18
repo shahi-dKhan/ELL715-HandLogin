@@ -171,65 +171,388 @@ where $\mathbf{d} \in \mathbb{R}^{105}$ is the final feature descriptor capturin
 
 \subsection{Temporal Hierarchical Covariance Descriptor}
 
+To capture the temporal dynamics of each gesture, the feature matrix $F \in \mathbb{R}^{14 \times N}$ is divided into multiple temporal segments. 
+We use a three-level hierarchy where the sequence is split into $1 + 2 + 4 = 7$ parts in total, giving both coarse and fine temporal resolution.
 
-\vspace{0.5em}
-\noindent
-\textbf{Hierarchical Temporal Segmentation:}
-The sequence is divided into multiple temporal segments at different levels of granularity.  
-For a hierarchy depth of \( L = 3 \), the division results in:
+For each segment, a covariance matrix is computed as:
 \[
-1 + 2 + 4 = 7 \text{ temporal partitions.}
+C = \frac{1}{N - 1} \sum_{n=1}^{N} (f_n - \mu)(f_n - \mu)^{\top},
+\quad \text{where} \quad
+\mu = \frac{1}{N} \sum_{n=1}^{N} f_n
 \]
-Each level \( \ell \in \{1, 2, \dots, L\} \) contains \( 2^{\ell-1} \) equal-length temporal segments.
-
-For a given level \(\ell\) and segment \(s\), the subset of feature vectors belonging to that temporal range is denoted:
+Each $C$ is symmetric, so we only keep its upper-triangular entries (105 values for $14$ features). 
+The seven such vectors are then concatenated to form the final descriptor:
 \[
-F_{\ell, s} = \{ f_n \;|\; t_n \in [s/S_\ell, (s+1)/S_\ell) \}, \quad \text{where } S_\ell = 2^{\ell-1}
-\]
-
-\vspace{0.5em}
-\noindent
-\textbf{Covariance Representation per Segment:}
-For each temporal segment \(F_{\ell,s}\), we compute its empirical covariance matrix:
-\[
-C_{\ell,s} = \frac{1}{N_{\ell,s} - 1} \sum_{n=1}^{N_{\ell,s}} (f_n - \mu_{\ell,s})(f_n - \mu_{\ell,s})^{\top}
-\]
-where
-\[
-\mu_{\ell,s} = \frac{1}{N_{\ell,s}} \sum_{n=1}^{N_{\ell,s}} f_n
-\]
-is the mean feature vector within that segment, and \(N_{\ell,s}\) is the number of samples in that segment.
-
-\vspace{0.5em}
-\noindent
-\textbf{Compact Covariance Encoding:}
-Since \( C_{\ell,s} \in \mathbb{R}^{D \times D} \) is symmetric, only its upper-triangular elements are retained to avoid redundancy.  
-The unique elements are vectorized as:
-\[
-C_{\ell,s}^{ut} = \text{vec}_{ut}(C_{\ell,s}) \in \mathbb{R}^{\frac{D(D+1)}{2}}
-\]
-where \( \text{vec}_{ut}(\cdot) \) denotes concatenation of the upper-triangular entries.
-
-\vspace{0.5em}
-\noindent
-\textbf{Final Descriptor:}
-All such upper-triangular covariance vectors are concatenated across the hierarchy to form the final temporal hierarchical descriptor:
-\[
-\text{Descriptor}_{TH} = [\, C_{1,1}^{ut},\; C_{2,1}^{ut},\; C_{2,2}^{ut},\; \dots,\; C_{L,2^{L-1}}^{ut} \,] \in \mathbb{R}^{(2^L - 1) \cdot \frac{D(D+1)}{2}}
+\text{Descriptor}_{TH} = [C_1^{ut}, C_2^{ut}, \ldots, C_7^{ut}] \in \mathbb{R}^{735}
 \]
 
-For \( D = 14 \) and \( L = 3 \), this yields:
+This representation captures how feature correlations evolve over time while remaining compact. 
+\textbf{Implementation Note: } all covariance computations are parallelized using Numba for efficiency.\\
+
+
+\textbf{Result Note:} There has been barely an improvement in the results after implementing temporal hierarchy. The table showing the results before and after implementing temporal hierarchy is as follows:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Gesture} & \textbf{Without Temporal Hierarchy} & \textbf{With Temporal Hierarchy} \\
+        \hline
+        Compass & 0.280 & 0.289 \\
+        Piano & 0.305 & 0.303 \\
+        Push & 0.280 & 0.275 \\
+        UCDO & 0.298 & 0.275 \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of Recognition Accuracy With and Without Temporal Hierarchy using EER}
+    \label{tab:temporal_hierarchy_comparison}
+\end{table}
+
+
+\subsection{Hand-Morphology:}
+
+For each sub-silhouette, a separate feature matrix $F_k \in \mathbb{R}^{14 \times N_k}$ is computed, following the same 14-dimensional feature representation used for the full silhouette.  
+Each sub-silhouette then produces its own temporal-hierarchical covariance descriptor $C_k \in \mathbb{R}^{735}$.
+
+The final multichannel descriptor is formed by concatenating the descriptor of the full silhouette with those of the $K=3$ sub-silhouettes:
 \[
-\text{Descriptor}_{TH} \in \mathbb{R}^{7 \times 105} = \mathbb{R}^{735}
+\text{Descriptor}_{multi} = [\, C_{\text{full}},\, C_1,\, C_2,\, C_3 \,]
 \]
 
-\vspace{0.5em}
-\noindent
-\textbf{Implementation Note:}
-Numba’s \texttt{njit(parallel=True)} acceleration is used to parallelize computations, yielding a 5–10× runtime speedup.  
+This results in a combined representation of dimension:
+\[
+4 \times 735 = 2940
+\]
 
-\vspace{1em}
-\noindent
+Some examples of subsilhouettes representation:
+
+% @copilot: Can you write a code for showing 4 image horizontally such that there is an = between the first 2, and + between the last 2 images?
+\begin{figure}[H]
+    \centering
+    % --- Full Silhouette ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png}
+        \caption{Full Silhouette}
+        \label{fig:full_silhouette}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$=$}
+    \hfill
+    % --- Sub-silhouette 1 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png}
+        \caption{Sub-silhouette 1}
+        \label{fig:subsilhouette1}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 2 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png}
+        \caption{Sub-silhouette 2}
+        \label{fig:subsilhouette2}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 3 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png}
+        \caption{Sub-silhouette 3}
+        \label{fig:subsilhouette3}
+    \end{subfigure}
+
+    \caption{Example of sub-silhouette decomposition from a full silhouette for the compass gesture.}
+    \label{fig:subsilhouettes_example}
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \centering
+    % --- Full Silhouette ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png}
+        \caption{Full Silhouette}
+        \label{fig:full_silhouette_2}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$=$}
+    \hfill
+    % --- Sub-silhouette 1 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png}
+        \caption{Sub-silhouette 1}
+        \label{fig:subsilhouette1_2}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 2 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png}
+        \caption{Sub-silhouette 2}
+        \label{fig:subsilhouette2_2}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 3 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png}
+        \caption{Sub-silhouette 3}
+        \label{fig:subsilhouette3_2}
+    \end{subfigure}
+
+    \caption{Example of sub-silhouette decomposition from a full silhouette for the piano gesture.}
+    \label{fig:subsilhouettes_example_2}
+\end{figure}
+
+
+
+% @copilot, can you write the above two figures again but for push gesture and ucdo gesture?
+\begin{figure}[H]
+    \centering
+    % --- Full Silhouette ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png}
+        \caption{Full Silhouette}
+        \label{fig:full_silhouette_3}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$=$}
+    \hfill
+    % --- Sub-silhouette 1 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png}
+        \caption{Sub-silhouette 1}
+        \label{fig:subsilhouette1_3}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 2 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png}
+        \caption{Sub-silhouette 2}
+        \label{fig:subsilhouette2_3}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 3 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png}
+        \caption{Sub-silhouette 3}
+        \label{fig:subsilhouette3_3}
+    \end{subfigure}
+
+    \caption{Example of sub-silhouette decomposition from a full silhouette for the push gesture.}
+    \label{fig:subsilhouettes_example_3}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    % --- Full Silhouette ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png}
+        \caption{Full Silhouette}
+        \label{fig:full_silhouette_4}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$=$}
+    \hfill
+    % --- Sub-silhouette 1 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png}
+        \caption{Sub-silhouette 1}
+        \label{fig:subsilhouette1_4}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 2 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png}
+        \caption{Sub-silhouette 2}
+        \label{fig:subsilhouette2_4}
+    \end{subfigure}
+    \hfill
+    \raisebox{0.05\height}{$+$}
+    \hfill
+    % --- Sub-silhouette 3 ---
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png}
+        \caption{Sub-silhouette 3}
+        \label{fig:subsilhouette3_4}
+    \end{subfigure}
+
+    \caption{Example of sub-silhouette decomposition from a full silhouette for the UCDO gesture.}
+    \label{fig:subsilhouettes_example_4}
+\end{figure}
+
+
+\textbf{Note:} The above study has been done for test sample 001 of user 02, 2nd frame, considering the 1st frame as background; for all the gestures, i.e., Compass, Piano, Push and UCDO.\\
+
+\vspace{0.5cm}
+For cosine similarity:
+\[
+d_{\text{cosine}} = 1 - \frac{1}{4} \sum_{k \in \{\text{full},1,2,3\}} 
+\frac{ \langle C_k^{(a)},\, C_k^{(b)} \rangle }
+{ \| C_k^{(a)} \|_2 \, \| C_k^{(b)} \|_2 }
+\]
+where $C_k^{(a)}$ and $C_k^{(b)}$ are the covariance descriptors of the $k$-th channel for samples $a$ and $b$.  
+
+
+
+\subsection{ablation study}
+
+We have considered three scenerios for the ablation study, which includes; Baseline, Baseline + Temporal Hierarchy, and Baseline + Temporal Hierarchy + Hand Morphology. The results are as follows:
+
+% @ copilot, make three plots side by side for the above three scenerios 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/Baseline/Compass_hist.png}
+        \caption{Baseline}
+        \label{fig:ablation_baseline}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/TemporalHierarchy/Compass_hist.png}
+        \caption{Baseline + Temporal Hierarchy}
+        \label{fig:ablation_temporal_hierarchy}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/AdditionalTunnels/Compass_hist.png}
+        \caption{Baseline + Temporal Hierarchy + Hand Morphology}
+        \label{fig:ablation_hand_morphology}
+    \end{subfigure}
+
+    \caption{Ablation Study Confusion Matrices for Different Scenarios}
+    \label{fig:ablation_study_histograms_for_compass}
+\end{figure}
+
+
+%@copilot, can you repeat the above figure for piano, push and ucdo gestures?
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/Baseline/Piano_hist.png}
+        \caption{Baseline}
+        \label{fig:ablation_baseline_piano}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/TemporalHierarchy/Piano_hist.png}
+        \caption{Baseline + Temporal Hierarchy}
+        \label{fig:ablation_temporal_hierarchy_piano}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/AdditionalTunnels/Piano_hist.png}
+        \caption{Baseline + Temporal Hierarchy + Hand Morphology}
+        \label{fig:ablation_hand_morphology_piano}
+    \end{subfigure}
+
+    \caption{Ablation Study Confusion Matrices for Different Scenarios - Piano Gesture}
+    \label{fig:ablation_study_histograms_for_piano}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/Baseline/Push_hist.png}
+        \caption{Baseline}
+        \label{fig:ablation_baseline_push}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/TemporalHierarchy/Push_hist.png}
+        \caption{Baseline + Temporal Hierarchy}
+        \label{fig:ablation_temporal_hierarchy_push}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/AdditionalTunnels/Push_hist.png}
+        \caption{Baseline + Temporal Hierarchy + Hand Morphology}
+        \label{fig:ablation_hand_morphology_push}
+    \end{subfigure}
+
+    \caption{Ablation Study Confusion Matrices for Different Scenarios - Push Gesture}
+    \label{fig:ablation_study_histograms_for_push}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/Baseline/UCDO_hist.png}
+        \caption{Baseline}
+        \label{fig:ablation_baseline_ucdo}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/TemporalHierarchy/UCDO_hist.png}
+        \caption{Baseline + Temporal Hierarchy}
+        \label{fig:ablation_temporal_hierarchy_ucdo}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/AdditionalTunnels/UCDO_hist.png}
+        \caption{Baseline + Temporal Hierarchy + Hand Morphology}
+        \label{fig:ablation_hand_morphology_ucdo}
+    \end{subfigure}
+
+    \caption{Ablation Study Confusion Matrices for Different Scenarios - UCDO Gesture}
+    \label{fig:ablation_study_histograms_for_ucdo}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Equal Error Rate (EER) comparison across different ablation settings and gestures.}
+    \label{tab:ablation_eer}
+    \begin{tabular}{lccc}
+        \hline
+        \textbf{Gesture} & \textbf{Baseline} & \textbf{Temporal Hierarchy} & \textbf{Hand Morphology} \\
+        \hline
+        Compass & 0.280 & 0.265 & 0.204 \\
+        Piano   & 0.305 & 0.303 & 0.280 \\
+        Push    & 0.260 & 0.275 & 0.200 \\
+        UCDO    & 0.299 & 0.260 & 0.226 \\
+        \hline
+    \end{tabular}
+\end{table}
 
 % =================================================
 
