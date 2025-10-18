@@ -1,13 +1,5 @@
 # Fdb version 4
-["bibtex main"] 1760803412.42149 "main.aux" "main.bbl" "main" 1760803707.18078 0
-  "./references.bib" 1760619546 295 3b389ee42a8820b30d36d011b0dca324 ""
-  "/usr/local/texlive/2024/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main.aux" 1760803706.88478 14266 5561f76e0cb4a2f84836d7c403b3a938 "pdflatex"
-  (generated)
-  "main.bbl"
-  "main.blg"
-  (rewritten before read)
-["pdflatex"] 1760803704.7255 "/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report/main.tex" "main.pdf" "main" 1760803707.18095 0
+["pdflatex"] 1760810266.81247 "/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report_v2/main.tex" "main.pdf" "main" 1760810269.40102 2
   "../ell715_assg4/01/Compass/Test001/LSB/LSB2.png" 1406106296 123649 3ea2217690ed5a388be33224f13c0c18 ""
   "../ell715_assg4/01/Piano/Test001/LSB/LSB2.png" 1406105944 123309 0131a0daee7c905abf99993a21ff43f7 ""
   "../ell715_assg4/01/Push/Test001/LSB/LSB2.png" 1406105524 123169 c45b45b9d6dabae8017f76b1b7ed9c1a ""
@@ -47,7 +39,7 @@
   "../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png" 1760772643.99756 2605 657f3333979d149a42269fa6c06b8340 ""
   "../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png" 1760772644.00525 2077 10d7070eda7323cb81b354fe86c270f5 ""
   "../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png" 1760772644.01356 2187 0776e167cb027a75dd27d0887ec18995 ""
-  "/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report/main.tex" 1760803701.16307 32318 59a4bd45f748c8233d6b33c11995fd88 ""
+  "/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report_v2/main.tex" 1760810265.63686 39384 0f081a3d7757c0d1b0e6ecdc8093781b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -264,13 +256,16 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1735154789.85033 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1735154766 8221440 073c4267ee014c64425308f1e292fa56 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "commands.tex" 1760619546 1447 1b349ecf0464f9472ea5af918c14ae04 ""
-  "format.tex" 1760772600.80173 853 e42fe6f7c196b0868c29fd51a311575a ""
-  "main.aux" 1760803706.88478 14266 5561f76e0cb4a2f84836d7c403b3a938 "pdflatex"
-  "main.bbl" 1760803412.53561 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
-  "main.out" 1760803706.88614 2301 441fb101ab8baebd5c8b537200bcb3fb "pdflatex"
-  "main.tex" 1760803701.16307 32318 59a4bd45f748c8233d6b33c11995fd88 ""
-  "preamble.tex" 1760724005.50527 1451 ed10460079ca1457a98d4ab79db54960 ""
+  "Compass_hist.png" 1760789200 45108 64e3a283f8b3953efc7ba1914f965b16 ""
+  "Piano_hist.png" 1760789200 43275 90b912f7f089aa32e5193ca9e92b5848 ""
+  "Push_hist.png" 1760789200 42502 744d11b55a82ed49379597eb245eb971 ""
+  "UCDO_hist.png" 1760789200 43646 b8485f2c6872852d8887b04bce3200bf ""
+  "commands.tex" 1760789200 1447 1b349ecf0464f9472ea5af918c14ae04 ""
+  "format.tex" 1760789200 853 e42fe6f7c196b0868c29fd51a311575a ""
+  "main.aux" 1760810269.30198 16885 9bbe7d2f9cbb9eaa44417c0d97d7baa3 "pdflatex"
+  "main.out" 1760810269.30364 2309 be6e8059b6a4397a7cd2521b80d81a59 "pdflatex"
+  "main.tex" 1760810265.63686 39384 0f081a3d7757c0d1b0e6ecdc8093781b ""
+  "preamble.tex" 1760789200 1473 3ec18fba9b0d9dab54e30177b0be0562 ""
   (generated)
   "main.aux"
   "main.log"

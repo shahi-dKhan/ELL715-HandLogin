@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.26)  18 OCT 2025 21:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.26)  18 OCT 2025 23:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report/main.tex
-(/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report/main.tex
+**/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report_v2/main.tex
+(/Users/shahidkhan/Documents/Acads/image_processing/assignment4/assignment/report_v2/main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (./preamble.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/extsizes/extarticle.cls
@@ -182,36 +182,138 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box54
 \@float@everytoks=\toks32
 \@floatcapt=\box55
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count281
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count282
+)
+\@linkdim=\dimen160
+\Hy@linkcounter=\count283
+\Hy@pagecounter=\count284
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count285
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4179.
+Package hyperref Info: Link nesting OFF on input line 4184.
+Package hyperref Info: Hyper index ON on input line 4187.
+Package hyperref Info: Plain pages OFF on input line 4194.
+Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4446.
+\c@Hy@tempcnt=\count286
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4784.
+\XeTeXLinkMargin=\dimen161
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count287
+\Field@Width=\dimen162
+\Fld@charsize=\dimen163
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count288
+\c@Item=\count289
+\c@Hfootnote=\count290
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count291
+\c@bookmark@seq@number=\count292
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)
+\Hy@SectionHShift=\skip56
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
 \@enLab=\toks33
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip56
-\enit@outerparindent=\dimen160
+\labelindent=\skip57
+\enit@outerparindent=\dimen164
 \enit@toks=\toks34
 \enit@inbox=\box56
-\enit@count@id=\count281
-\enitdp@description=\count282
+\enit@count@id=\count293
+\enitdp@description=\count294
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip57
-\fb@frw=\dimen161
-\fb@frh=\dimen162
-\FrameRule=\dimen163
-\FrameSep=\dimen164
+\OuterFrameSep=\skip58
+\fb@frw=\dimen165
+\fb@frh=\dimen166
+\FrameRule=\dimen167
+\FrameSep=\dimen168
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2022-09-14 v5.2n context-sensitive quotations (JAW)
- (/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count283
-)
-\csq@reset=\count284
-\csq@gtype=\count285
-\csq@glevel=\count286
-\csq@qlevel=\count287
-\csq@maxlvl=\count288
-\csq@tshold=\count289
+\csq@reset=\count295
+\csq@gtype=\count296
+\csq@glevel=\count297
+\csq@qlevel=\count298
+\csq@maxlvl=\count299
+\csq@tshold=\count300
 \csq@ltx@everypar=\toks35
  (/usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2022-09-14 v5.2n csquotes generic definitions (JAW)
@@ -224,20 +326,20 @@ File: csquotes.cfg
 Package: tabularx 2023/07/08 v2.11c `tabularx' package (DPC)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen165
+\col@sep=\dimen169
 \ar@mcellbox=\box57
-\extrarowheight=\dimen166
+\extrarowheight=\dimen170
 \NC@list=\toks36
-\extratabsurround=\skip58
-\backup@length=\skip59
+\extratabsurround=\skip59
+\backup@length=\skip60
 \ar@cellbox=\box58
 )
-\TX@col@width=\dimen167
-\TX@old@table=\dimen168
-\TX@old@col=\dimen169
-\TX@target=\dimen170
-\TX@delta=\dimen171
-\TX@cols=\count290
+\TX@col@width=\dimen171
+\TX@old@table=\dimen172
+\TX@old@col=\dimen173
+\TX@target=\dimen174
+\TX@delta=\dimen175
+\TX@cols=\count301
 \TX@ftn=\toks37
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
@@ -259,24 +361,24 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
-\c@tracingmulticols=\count291
+\c@tracingmulticols=\count302
 \mult@box=\box59
-\multicol@leftmargin=\dimen172
-\c@unbalance=\count292
-\c@collectmore=\count293
-\doublecol@number=\count294
-\multicoltolerance=\count295
-\multicolpretolerance=\count296
-\full@width=\dimen173
-\page@free=\dimen174
-\premulticols=\dimen175
-\postmulticols=\dimen176
-\multicolsep=\skip60
-\multicolbaselineskip=\skip61
+\multicol@leftmargin=\dimen176
+\c@unbalance=\count303
+\c@collectmore=\count304
+\doublecol@number=\count305
+\multicoltolerance=\count306
+\multicolpretolerance=\count307
+\full@width=\dimen177
+\page@free=\dimen178
+\premulticols=\dimen179
+\postmulticols=\dimen180
+\multicolsep=\skip61
+\multicolbaselineskip=\skip62
 \partial@page=\box60
 \last@line=\box61
 \mc@boxedresult=\box62
-\maxbalancingoverflow=\dimen177
+\maxbalancingoverflow=\dimen181
 \mult@rightbox=\box63
 \mult@grightbox=\box64
 \mult@firstbox=\box65
@@ -317,150 +419,48 @@ Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
 \@tempa=\box100
 \@tempa=\box101
 \@tempa=\box102
-\c@minrows=\count297
-\c@columnbadness=\count298
-\c@finalcolumnbadness=\count299
-\last@try=\dimen178
-\multicolovershoot=\dimen179
-\multicolundershoot=\dimen180
+\c@minrows=\count308
+\c@columnbadness=\count309
+\c@finalcolumnbadness=\count310
+\last@try=\dimen182
+\multicolovershoot=\dimen183
+\multicolundershoot=\dimen184
 \mult@nat@firstbox=\box103
 \colbreak@box=\box104
-\mc@col@check@num=\count300
+\mc@col@check@num=\count311
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen181
-\captionmargin=\dimen182
-\caption@leftmargin=\dimen183
-\caption@rightmargin=\dimen184
-\caption@width=\dimen185
-\caption@indent=\dimen186
-\caption@parindent=\dimen187
-\caption@hangindent=\dimen188
+\caption@tempdima=\dimen185
+\captionmargin=\dimen186
+\caption@leftmargin=\dimen187
+\caption@rightmargin=\dimen188
+\caption@width=\dimen189
+\caption@indent=\dimen190
+\caption@parindent=\dimen191
+\caption@hangindent=\dimen192
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count301
-\c@continuedfloat=\count302
+\c@caption@flags=\count312
+\c@continuedfloat=\count313
 Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count303
+\c@subfigure=\count314
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count304
+\c@subtable=\count315
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip62
-\bibsep=\skip63
+\bibhang=\skip63
+\bibsep=\skip64
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count305
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
- (/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
-Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty
-Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+\c@NAT@ctr=\count316
 )
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty
-Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/auxhook/auxhook.sty
-Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
- (/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty
-Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
-Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-))
-\c@section@level=\count306
-)
-\@linkdim=\dimen189
-\Hy@linkcounter=\count307
-\Hy@pagecounter=\count308
- (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
-) (/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
-Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-)
-\Hy@SavedSpaceFactor=\count309
- (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
-)
-Package hyperref Info: Hyper figures OFF on input line 4179.
-Package hyperref Info: Link nesting OFF on input line 4184.
-Package hyperref Info: Hyper index ON on input line 4187.
-Package hyperref Info: Plain pages OFF on input line 4194.
-Package hyperref Info: Backreferencing OFF on input line 4199.
-Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count310
- (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip17
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen190
- (/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
-Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
-))
-\Fld@menulength=\count311
-\Field@Width=\dimen191
-\Fld@charsize=\dimen192
-Package hyperref Info: Hyper figures OFF on input line 6063.
-Package hyperref Info: Link nesting OFF on input line 6068.
-Package hyperref Info: Hyper index ON on input line 6071.
-Package hyperref Info: backreferencing OFF on input line 6078.
-Package hyperref Info: Link coloring OFF on input line 6083.
-Package hyperref Info: Link coloring with OCG OFF on input line 6088.
-Package hyperref Info: PDF/A mode OFF on input line 6093.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
-package with kernel methods
-)
-\Hy@abspage=\count312
-\c@Item=\count313
-\c@Hfootnote=\count314
-)
-Package hyperref Info: Driver (autodetected): hpdftex.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
- (/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
-with kernel methods
-)
-\Fld@listcount=\count315
-\c@bookmark@seq@number=\count316
- (/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
-Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
-)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
-)
-\Hy@SectionHShift=\skip64
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 65.
+Package hyperref Info: Option `colorlinks' set `true' on input line 66.
 ) (./format.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \ttl@box=\box105
@@ -730,27 +730,68 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (./main.aux)
+ (./main.aux
+
+LaTeX Warning: Label `fig:ablation_baseline_push' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:ablation_baseline_push' multiply defined.
+
+
+LaTeX Warning: Label `fig:ablation_temporal_hierarchy_push' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:ablation_temporal_hierarchy_push' multiply defined.
+
+
+LaTeX Warning: Label `fig:ablation_hand_morphology_push' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:ablation_hand_morphology_push' multiply defined.
+
+
+LaTeX Warning: Label `fig:ablation_hand_morphology_push' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:ablation_hand_morphology_push' multiply defined.
+
+
+LaTeX Warning: Label `fig:ablation_study_histograms_for_push' multiply defined.
+
+
+./main.aux:165: Package natbib Error: Bibliography not compatible with author-year citations.
+(natbib)                Press <return> to continue in numerical citation style.
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.165 ...and\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+Check the bibliography entries for non-compliant syntax,
+or select author-year BibTeX style, e.g. plainnat
+
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -786,7 +827,12 @@ LaTeX Font Info:    ... okay on input line 5.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+Package hyperref Info: Link coloring ON on input line 6.
+(./main.out) (./main.out)
+\@outlinefile=\write4
+\openout4 = `main.out'.
+
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count347
 \scratchdimen=\dimen310
@@ -806,286 +852,301 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 5.
- (./main.out) (./main.out)
-\@outlinefile=\write4
-\openout4 = `main.out'.
 
-<../ell715_assg4/01/Compass/Test001/LSB/LSB2.png, id=43, 385.44pt x 319.1925pt>
+Overfull \hbox (22.88882pt too wide) in paragraph at lines 22--24
+[]\OT1/cmr/m/n/10.95 The source code is avail-able at our GitHub repos-i-tory: [][]\OT1/cmr/bx/n/10.95 GitHub: shahi-dKhan/ELL715-HandLogin[][]\OT1/cmr/m/n/10.95 . 
+ []
+
+<../ell715_assg4/01/Compass/Test001/LSB/LSB2.png, id=44, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/Compass/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/Compass/Test001/LSB/LSB2.png>
-Package pdftex.def Info: ../ell715_assg4/01/Compass/Test001/LSB/LSB2.png  used on input line 34.
+Package pdftex.def Info: ../ell715_assg4/01/Compass/Test001/LSB/LSB2.png  used on input line 37.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png, id=45, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png, id=46, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png  used on input line 41.
+Package pdftex.def Info: ../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png  used on input line 44.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../ell715_assg4/01/Piano/Test001/LSB/LSB2.png, id=46, 385.44pt x 319.1925pt>
+<../ell715_assg4/01/Piano/Test001/LSB/LSB2.png, id=47, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/Piano/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/Piano/Test001/LSB/LSB2.png>
-Package pdftex.def Info: ../ell715_assg4/01/Piano/Test001/LSB/LSB2.png  used on input line 54.
+Package pdftex.def Info: ../ell715_assg4/01/Piano/Test001/LSB/LSB2.png  used on input line 57.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png, id=47, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png, id=48, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png  used on input line 61.
+Package pdftex.def Info: ../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png  used on input line 64.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../ell715_assg4/01/Push/Test001/LSB/LSB2.png, id=48, 385.44pt x 319.1925pt>
+<../ell715_assg4/01/Push/Test001/LSB/LSB2.png, id=49, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/Push/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/Push/Test001/LSB/LSB2.png>
-Package pdftex.def Info: ../ell715_assg4/01/Push/Test001/LSB/LSB2.png  used on input line 73.
+Package pdftex.def Info: ../ell715_assg4/01/Push/Test001/LSB/LSB2.png  used on input line 76.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png, id=49, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png, id=50, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png  used on input line 80.
+Package pdftex.def Info: ../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png  used on input line 83.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
- [1
+[1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../ell715_assg4/01/Compass/Test001/LSB/LSB2.png> <../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png (PNG copy)> <../ell715_assg4/01/Piano/Test001/LSB/LSB2.png> <../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png (PNG copy)>]
-<../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png, id=65, 385.44pt x 319.1925pt>
+<../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png, id=66, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png>
-Package pdftex.def Info: ../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png  used on input line 93.
+Package pdftex.def Info: ../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png  used on input line 96.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png, id=66, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png, id=67, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png  used on input line 100.
+Package pdftex.def Info: ../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png  used on input line 103.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 110.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 113.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 110.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 113.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 110.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 113.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+esint on input line 110.
+LaTeX Font Info:    Trying to load font information for U+esint on input line 113.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 ) [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <../ell715_assg4/01/Push/Test001/LSB/LSB2.png> <../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png (PNG copy)> <../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png> <../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 189--191
+Underfull \hbox (badness 10000) in paragraph at lines 192--194
 
  []
 
 [3]
-<../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png, id=88, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png, id=89, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png  used on input line 237.
+Package pdftex.def Info: ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png  used on input line 239.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png, id=89, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png, id=90, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png  used on input line 247.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png  used on input line 249.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png, id=90, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png, id=91, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png  used on input line 257.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png  used on input line 259.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png, id=91, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png, id=92, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png  used on input line 267.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png  used on input line 269.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png, id=92, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png, id=93, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png  used on input line 283.
+Package pdftex.def Info: ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png  used on input line 285.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png, id=93, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png, id=94, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png  used on input line 293.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png  used on input line 295.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png, id=94, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png, id=95, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png  used on input line 303.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png  used on input line 305.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png, id=95, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png, id=96, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png  used on input line 313.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png  used on input line 315.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
  [4 <../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png (PNG copy)>]
-<../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png, id=104, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png, id=105, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png  used on input line 330.
+Package pdftex.def Info: ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png  used on input line 332.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png, id=105, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png, id=106, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png  used on input line 340.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png  used on input line 342.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png, id=106, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png, id=107, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png  used on input line 350.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png  used on input line 352.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png, id=107, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png, id=108, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png  used on input line 360.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png  used on input line 362.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png, id=108, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png, id=109, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png  used on input line 375.
+Package pdftex.def Info: ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png  used on input line 377.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png, id=109, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png, id=110, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png  used on input line 385.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png  used on input line 387.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png, id=110, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png, id=111, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png  used on input line 395.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png  used on input line 397.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png, id=111, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png, id=112, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png  used on input line 405.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png  used on input line 407.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
+Underfull \hbox (badness 10000) in paragraph at lines 417--418
 
  []
 
-<../results/Baseline/Compass_hist.png, id=112, 433.62pt x 289.08pt>
+<../results/Baseline/Compass_hist.png, id=113, 433.62pt x 289.08pt>
 File: ../results/Baseline/Compass_hist.png Graphic file (type png)
 <use ../results/Baseline/Compass_hist.png>
-Package pdftex.def Info: ../results/Baseline/Compass_hist.png  used on input line 437.
+Package pdftex.def Info: ../results/Baseline/Compass_hist.png  used on input line 439.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/Compass_hist.png, id=113, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/Compass_hist.png, id=114, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/Compass_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/Compass_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/Compass_hist.png  used on input line 444.
+Package pdftex.def Info: ../results/TemporalHierarchy/Compass_hist.png  used on input line 446.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/Compass_hist.png, id=114, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/Compass_hist.png, id=115, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/Compass_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/Compass_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/Compass_hist.png  used on input line 451.
+Package pdftex.def Info: ../results/AdditionalTunnels/Compass_hist.png  used on input line 453.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
 [5 <../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png (PNG copy)> <../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png (PNG copy)> <../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png (PNG copy)>]
-<../results/Baseline/Piano_hist.png, id=122, 433.62pt x 289.08pt>
+<../results/Baseline/Piano_hist.png, id=123, 433.62pt x 289.08pt>
 File: ../results/Baseline/Piano_hist.png Graphic file (type png)
 <use ../results/Baseline/Piano_hist.png>
-Package pdftex.def Info: ../results/Baseline/Piano_hist.png  used on input line 466.
+Package pdftex.def Info: ../results/Baseline/Piano_hist.png  used on input line 468.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/Piano_hist.png, id=123, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/Piano_hist.png, id=124, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/Piano_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/Piano_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/Piano_hist.png  used on input line 473.
+Package pdftex.def Info: ../results/TemporalHierarchy/Piano_hist.png  used on input line 475.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/Piano_hist.png, id=124, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/Piano_hist.png, id=125, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/Piano_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/Piano_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/Piano_hist.png  used on input line 480.
+Package pdftex.def Info: ../results/AdditionalTunnels/Piano_hist.png  used on input line 482.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/Baseline/Push_hist.png, id=125, 433.62pt x 289.08pt>
+<../results/Baseline/Push_hist.png, id=126, 433.62pt x 289.08pt>
 File: ../results/Baseline/Push_hist.png Graphic file (type png)
 <use ../results/Baseline/Push_hist.png>
-Package pdftex.def Info: ../results/Baseline/Push_hist.png  used on input line 493.
+Package pdftex.def Info: ../results/Baseline/Push_hist.png  used on input line 495.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/Push_hist.png, id=126, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/Push_hist.png, id=127, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/Push_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/Push_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/Push_hist.png  used on input line 500.
+Package pdftex.def Info: ../results/TemporalHierarchy/Push_hist.png  used on input line 502.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/Push_hist.png, id=127, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/Push_hist.png, id=128, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/Push_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/Push_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/Push_hist.png  used on input line 507.
+Package pdftex.def Info: ../results/AdditionalTunnels/Push_hist.png  used on input line 509.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/Baseline/UCDO_hist.png, id=128, 433.62pt x 289.08pt>
+<../results/Baseline/UCDO_hist.png, id=129, 433.62pt x 289.08pt>
 File: ../results/Baseline/UCDO_hist.png Graphic file (type png)
 <use ../results/Baseline/UCDO_hist.png>
-Package pdftex.def Info: ../results/Baseline/UCDO_hist.png  used on input line 520.
+Package pdftex.def Info: ../results/Baseline/UCDO_hist.png  used on input line 522.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/UCDO_hist.png, id=129, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/UCDO_hist.png, id=130, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/UCDO_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/UCDO_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/UCDO_hist.png  used on input line 527.
+Package pdftex.def Info: ../results/TemporalHierarchy/UCDO_hist.png  used on input line 529.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/UCDO_hist.png, id=130, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/UCDO_hist.png, id=131, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/UCDO_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/UCDO_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/UCDO_hist.png  used on input line 534.
+Package pdftex.def Info: ../results/AdditionalTunnels/UCDO_hist.png  used on input line 536.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
  [6 <../results/Baseline/Compass_hist.png> <../results/TemporalHierarchy/Compass_hist.png> <../results/AdditionalTunnels/Compass_hist.png> <../results/Baseline/Piano_hist.png> <../results/TemporalHierarchy/Piano_hist.png> <../results/AdditionalTunnels/Piano_hist.png> <../results/Baseline/Push_hist.png> <../results/TemporalHierarchy/Push_hist.png> <../results/AdditionalTunnels/Push_hist.png> <../results/Baseline/UCDO_hist.png> <../results/TemporalHierarchy/UCDO_hist.png> <../results/AdditionalTunnels/UCDO_hist.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 565--568
+Underfull \hbox (badness 10000) in paragraph at lines 567--570
 
  []
 
-<../results/Baseline/eer_matrix.png, id=150, 433.62pt x 361.35pt>
+<../results/Baseline/eer_matrix.png, id=151, 433.62pt x 361.35pt>
 File: ../results/Baseline/eer_matrix.png Graphic file (type png)
 <use ../results/Baseline/eer_matrix.png>
-Package pdftex.def Info: ../results/Baseline/eer_matrix.png  used on input line 574.
+Package pdftex.def Info: ../results/Baseline/eer_matrix.png  used on input line 576.
 (pdftex.def)             Requested size: 140.92793pt x 117.43735pt.
-<../results/TemporalHierarchy/eer_matrix.png, id=151, 433.62pt x 361.35pt>
+<../results/TemporalHierarchy/eer_matrix.png, id=152, 433.62pt x 361.35pt>
 File: ../results/TemporalHierarchy/eer_matrix.png Graphic file (type png)
 <use ../results/TemporalHierarchy/eer_matrix.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/eer_matrix.png  used on input line 581.
+Package pdftex.def Info: ../results/TemporalHierarchy/eer_matrix.png  used on input line 583.
 (pdftex.def)             Requested size: 140.92793pt x 117.43735pt.
-<../results/AdditionalTunnels/eer_matrix.png, id=152, 433.62pt x 361.35pt>
+<../results/AdditionalTunnels/eer_matrix.png, id=153, 433.62pt x 361.35pt>
 File: ../results/AdditionalTunnels/eer_matrix.png Graphic file (type png)
 <use ../results/AdditionalTunnels/eer_matrix.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/eer_matrix.png  used on input line 588.
+Package pdftex.def Info: ../results/AdditionalTunnels/eer_matrix.png  used on input line 590.
 (pdftex.def)             Requested size: 140.92793pt x 117.43735pt.
 [7 <../results/Baseline/eer_matrix.png> <../results/TemporalHierarchy/eer_matrix.png> <../results/AdditionalTunnels/eer_matrix.png>]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 652.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 654.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 652.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 654.
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 724--725
+Underfull \hbox (badness 10000) in paragraph at lines 726--727
 
  []
 
-[9]
-Overfull \hbox (23.39244pt too wide) in paragraph at lines 770--779
- [][] 
- []
-
-[10] (./main.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-) [11] (./main.aux)
+[9] [10] [11]
+<Compass_hist.png, id=202, 433.62pt x 289.08pt>
+File: Compass_hist.png Graphic file (type png)
+<use Compass_hist.png>
+Package pdftex.def Info: Compass_hist.png  used on input line 861.
+(pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
+<Push_hist.png, id=203, 433.62pt x 289.08pt>
+File: Push_hist.png Graphic file (type png)
+<use Push_hist.png>
+Package pdftex.def Info: Push_hist.png  used on input line 868.
+(pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
+<Piano_hist.png, id=204, 433.62pt x 289.08pt>
+File: Piano_hist.png Graphic file (type png)
+<use Piano_hist.png>
+Package pdftex.def Info: Piano_hist.png  used on input line 875.
+(pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
+<UCDO_hist.png, id=205, 433.62pt x 289.08pt>
+File: UCDO_hist.png Graphic file (type png)
+<use UCDO_hist.png>
+Package pdftex.def Info: UCDO_hist.png  used on input line 881.
+(pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
+ [12] [13 <./Compass_hist.png> <./Push_hist.png> <./Piano_hist.png> <./UCDO_hist.png>] [14] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 441FB101AB8BAEBD5C8B537200BCB3FB;2301.
+(rerunfilecheck)             Checksum: BE6E8059B6A4397A7CD2521B80D81A59;2309.
  ) 
 Here is how much of TeX's memory you used:
- 30534 strings out of 474116
- 610638 string characters out of 5743681
+ 30599 strings out of 474116
+ 611790 string characters out of 5743681
  1941187 words of memory out of 5000000
- 52348 multiletter control sequences out of 15000+600000
+ 52399 multiletter control sequences out of 15000+600000
  568353 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 106i,9n,110p,622b,651s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 106i,9n,110p,640b,757s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (11 pages, 1405991 bytes).
+Output written on main.pdf (14 pages, 1553233 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 172 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
- 280 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 319 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 300 words of extra memory for PDF output out of 10000 (max. 10000000)
 

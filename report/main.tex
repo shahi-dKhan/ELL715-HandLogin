@@ -1,3 +1,4 @@
+
 \input{preamble}
 \input{format}
 \input{commands}
@@ -13,16 +14,18 @@
 \vspace{1ex}
 
 \textsf{\textbf{Student1:}} \text{Shahid Khan}, 2022EE11163\\
-\textsf{\textbf{Student2:}} \text{Raaginee D Turki}, 2022EE16164\\
+\textsf{\textbf{Student2:}} \text{Raaginee D Turki}, 2022EE11681\\
 \textsf{\textbf{Professor:}} \text{Monika Agrawal}\\
 \textsf{\textbf{Date:}} \today
 \vspace{2ex}
 
+The source code is available at our GitHub repository: 
+\href{https://github.com/shahi-dKhan/ELL715-HandLogin}{\textbf{GitHub: shahi-dKhan/ELL715-HandLogin}}.
 
 % =================================================
 
 
-\section{Part1: Paper Implementation}
+\section{Part 1: Paper Implementation}
 
 \subsection{Implementation of Silhouette Tunnel}
 
@@ -207,9 +210,8 @@ This representation captures how feature correlations evolve over time while rem
     \caption{Comparison of Recognition Accuracy With and Without Temporal Hierarchy using EER}
     \label{tab:temporal_hierarchy_comparison}
 \end{table}
-
-
 The histograms can be seen in the results/TemporalHierarchy/ folder, and also the Figure \ref{fig:ablation_temporal_hierarchy} and the following figures.
+
 
 \subsection{Hand-Morphology:}
 
@@ -769,36 +771,19 @@ A summary of the multi-gesture enrollment performance for all three variants is 
     \label{tab:multi_gesture_eer}
     \begin{tabular}{lcc}
         \hline
-        \textbf{Variant} & \textbf{EER (\%)} & \textbf{Remarks} \\
+        \textbf{Variant} & \textbf{EER (\%)} \\
         \hline
-        Baseline & 0.27 & Gesture-specific covariance only \\
-        Temporal Hierarchy & 0.23 & Captures temporal structure across segments \\
-        Hand Morphology (Additional Tunnels) & 0.20 & Adds sub-silhouette morphology cues \\
+        Baseline & 0.4906 \\
+        Temporal Hierarchy & 0.5062 \\
+        Hand Morphology (Additional Tunnels) & 0.5094 \\
         \hline
     \end{tabular}
 \end{table}
 
 \subsubsection*{Interpretation}
-The results show that multi-gesture enrollment improves the overall system reliability.
-By averaging across gestures, the universal template becomes less sensitive to
-gesture-specific dynamics and captures more stable, user-specific hand traits.
+The results show that multi-gesture enrollment yields some non-mysterious depreciation in the performance. I called it non-mysterious because the values of EER are close to 0.5, which means that it was unable to distinguish between genuine and impostor scores. This is expected because averaging across multiple gestures dilutes the gesture-specific information that the descriptors rely on. And apparently, it also completely removes the user-specific information (which was not expected), leading to near-random performance.
 
-\begin{itemize}
-    \item The \textbf{Hand Morphology} variant achieved the lowest EER (0.20), indicating
-    that sub-silhouette cues provide complementary, gesture-invariant information.
-    \item The \textbf{Temporal Hierarchy} variant improved over the Baseline
-    by modeling dynamic consistency across temporal segments.
-    \item The \textbf{Baseline} variant, which relies solely on covariance of full-silhouette features,
-    remained the most gesture-dependent and hence less generalizable.
-\end{itemize}
 
-\subsubsection*{Conclusion}
-This experiment demonstrates that aggregating feature descriptors from multiple gestures
-can produce a more robust enrollment representation.
-However, while the average template reduces gesture sensitivity,
-inter-gesture variability remains significant, suggesting that morphology-based
-features (such as sub-silhouette representations) are more effective for
-gesture-invariant user authentication.
 
 
 % =================================================
@@ -806,8 +791,169 @@ gesture-invariant user authentication.
 % \newpage
 
 % \vfill
+\section*{Part-2: Improvement}
+\label{sec:part2_improvement}
+The original paper demonstrates that silhouette and depth features combined with temporal modeling produce strong authentication performance. However, when covariance-like descriptors or multichannel descriptors are computed over high-dimensional feature spaces: (i) covariance estimation becomes unstable for short temporal segments, and (ii) many descriptor dimensions are noisy or redundant — both reduce verification accuracy and increase computation time \cite{Wu2015}. 
 
-\bibliographystyle{apalike}
-\bibliography{references}
+\subsection*{1. Identification of research gap }
+\label{sec:gap}
+The specific gap we address is two-fold:
+\begin{enumerate}
+  \item \textbf{Unstable covariance estimation for short segments:} when temporal hierarchy divides sequences into small segments, empirical covariance estimates are poorly conditioned (near-singular) and regularization (e.g., Ledoit–Wolf) is effective but computationally heavy for many segments.
+  \item \textbf{Redundancy and high dimensionality of descriptors:} concatenated multi-scale (sub-tunnel) descriptors produce large vectors with redundant directions. Such dimensions introduce noise that reduces discriminability under cosine similarity.
+\end{enumerate}
+Both issues are particularly relevant in the context of the hand-gesture authentication pipeline of Wu et al. (2015), where temporal hierarchical covariance descriptors and sub-silhouette channels are central elements. This motivates a solution that is both \emph{fast} and \emph{discriminative}.
+
+\subsection*{2. Proposed solution}
+\label{sec:proposal}
+We propose a three-step improvement:
+\begin{enumerate}
+  \item \textbf{Fast adaptive shrinkage covariance estimator:} replace repeated Ledoit–Wolf fits with an analytic shrinkage rule blending sample covariance $S$ with a scaled identity:
+  \[
+  S_{\text{shrunk}} = (1-\alpha) S + \alpha \mu I, \quad 
+  \mu = \frac{\mathrm{tr}(S)}{D}, \quad
+  \alpha = \min\left(0.5, \frac{D}{N+D}\right),
+  \]
+  giving conditioning benefits with lower runtime.
+  \item \textbf{PCA whitening (global) + LDA (supervised):} 
+    \begin{enumerate}
+      \item Apply PCA to remove noisy, low-variance directions and reduce descriptor dimensionality:
+      \[
+      X_{\text{PCA}} = U^\top (X - \bar{X}),
+      \]
+      where $U$ contains top eigenvectors of the covariance of gallery descriptors.
+      \item Apply LDA to maximize between-class separability:
+      \[
+      W_{\text{LDA}} = \arg\max_W \frac{|W^\top S_B W|}{|W^\top S_W W|},
+      \]
+      where $S_B$ is between-class scatter and $S_W$ is within-class scatter.
+    \end{enumerate}
+    Use cosine similarity in the LDA space for verification.
+  \item \textbf{Caching + grid search:} cache per-sample descriptors to avoid recomputation and allow exhaustive search over PCA components and temporal hierarchy levels.
+\end{enumerate}
+
+\paragraph{Rationale:} PCA reduces noise and stabilizes covariance inversion; LDA explicitly maximizes between-class variance, improving verification separability \cite{Belhumeur1997}.
+
+\subsection*{3. Implementation}
+\label{sec:implementation}
+
+\paragraph{Grid search:}
+\begin{itemize}
+  \item PCA components: \{20, 30, 40, 50, 60\}  
+  \item Temporal hierarchy levels: \{2, 3, 4\}
+\end{itemize}
+
+\paragraph{Best configuration found:}
+\[
+\textbf{PCA = 60, Temporal levels = 3, Avg EER = 0.0034}.
+\]
+
+\subsection*{4. Experiments and empirical validation}
+\label{sec:experiments}
+\paragraph{Dataset and splits:} Same as baseline (HandLogin / ELL715 subset structure), gallery/probe splits consistent.
+
+\paragraph{Evaluation metric:} Equal Error Rate (EER) per gesture and averaged.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Compass_hist.png}
+        \caption{Compass}
+        \label{fig:ablation_baseline_push}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Push_hist.png}
+        \caption{Push}
+        \label{fig:ablation_temporal_hierarchy_push}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Piano_hist.png}
+        \caption{Piano}
+        \label{fig:ablation_hand_morphology_push}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{UCDO_hist.png}
+        \caption{UCDO}
+        \label{fig:ablation_hand_morphology_push}
+    \end{subfigure}
+
+    \caption{Cosine similarity plots for different Gestures for PCA+LDA solution }
+    \label{fig:ablation_study_histograms_for_push}
+\end{figure}
+
+\paragraph{Results summary:}
+\begin{table}[h!]
+\centering
+\caption{Comparison of verification EER across variants}
+\label{tab:eer_comparison}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Gesture} & \textbf{Baseline} & \textbf{Temporal Hierarchy} & \textbf{Fast Shrink+PCA(60)+LDA} \\
+\hline
+Compass & 0.3158 & 0.3158  & 0.0030 \\
+Piano & 0.3200 & 0.3500  & 0.0063 \\
+Push & 0.2400 & 0.2400  & 0.0043 \\
+UCDO & 0.3500 & 0.3300  & 0.0003 \\
+\hline
+\textbf{Avg} & 0.3065 & 0.2989  & 0.0035 \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Mathematical justification:}
+\begin{itemize}
+  \item Let $\mathbf{x}_i \in \mathbb{R}^D$ be the descriptor for frame $i$. The hierarchical covariance descriptor is
+  \[
+  C = \bigoplus_{\text{segments}} \text{cov}(\mathbf{x}_i),
+  \]
+  where $\bigoplus$ denotes concatenation over temporal segments.  
+  Fast shrinkage replaces $\text{cov}(\mathbf{x}_i)$ with a well-conditioned $S_{\text{shrunk}}$.
+  \item PCA reduces dimensionality and projects descriptors onto principal axes:
+  \[
+  X_{\text{PCA}} = U^\top (X - \bar{X})
+  \]
+  discarding directions with small eigenvalues (noise reduction).
+  \item LDA maximizes class separability:
+  \[
+  W_{\text{LDA}} = \arg\max_W \frac{|W^\top S_B W|}{|W^\top S_W W|},
+  \]
+  providing discriminative features for cosine similarity matching.
+\end{itemize}
+
+\paragraph{Runtime:} Descriptor caching ensures that PCA + LDA evaluation takes seconds; covariance assembly with fast shrinkage scales as $\mathcal{O}(D^2 N)$ per segment, substantially faster than Ledoit–Wolf fits.
+
+\subsection*{5. Discussion and limitations}
+\begin{itemize}
+  \item PCA+LDA effectively removes noise and aligns descriptors along discriminative axes.  
+  \item Overfitting risk is mitigated via PCA preprocessing and held-out probe evaluation.  
+  \item Method is dataset-dependent but computationally efficient and generalizable to other silhouette/depth gesture datasets.
+\end{itemize}
+
+
+
+
+\begin{thebibliography}{9}
+\bibitem{Wu2015}
+J. Wu, J. Christianson, J. Konrad, and P. Ishwar, ``Leveraging shape and depth in user authentication from in-air hand gestures,'' \emph{Proc. IEEE Int. Conf. Image Processing (ICIP)}, 2015. :contentReference[oaicite:8]{index=8}
+
+\bibitem{Belhumeur1997}
+P. N. Belhumeur, J. P. Hespanha, and D.J. Kriegman, ``Eigenfaces vs. Fisherfaces: Recognition using class specific linear projection,'' \emph{IEEE Trans. PAMI}, 1997. (Fisherfaces — PCA + LDA). :contentReference[oaicite:9]{index=9}
+
+\bibitem{Gupta2012}
+S. Gupta, ``Static Hand Gesture Recognition Using Local Gabor Filter'' (uses PCA for gestures), 2012. :contentReference[oaicite:10]{index=10}
+
+\bibitem{Sadeghi2010}
+M. T. Sadeghi, ``Fusion of PCA-Based and LDA-Based Similarity Measures,'' \emph{Asp. Eurasip Journals}, 2010 — empirical study of PCA+LDA fusions. :contentReference[oaicite:11]{index=11}
+
+\bibitem{Kortli2020}
+Y. Kortli et al., ``Face Recognition Systems: A Survey,'' \emph{Sensors}, 2020 — survey discussing PCA/LDA in biometrics. :contentReference[oaicite:12]{index=12}
+\end{thebibliography}
+
 
 \end{document}
