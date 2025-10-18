@@ -357,6 +357,96 @@ def compute_gesture_eer_matrix(per_gesture_map, variant):
     return gestures, eer_matrix
 
 
+def compute_multi_gesture_enrollment_eer(per_gesture_map, variant):
+    """
+    Compute EER using multi-gesture enrollment across all gestures.
+
+    The gallery template is formed by averaging all descriptors from gallery subjects
+    across all gestures. Probe samples are all descriptors from probe subjects.
+
+    This simulates a multi-gesture enrollment scenario with a single universal template.
+    """
+
+    variant_dir = os.path.join(RESULTS_DIR, variant)
+    os.makedirs(variant_dir, exist_ok=True)
+    save_path = os.path.join(variant_dir, "multi_gesture_eer.txt")
+
+    # -----------------------------
+    # Step 1 — Collect gallery and probe descriptors
+    # -----------------------------
+    gallery_descs, probe_descs = [], []
+
+    for gesture, subj_map in per_gesture_map.items():
+        for subj, desc_list in subj_map.items():
+            subj = str(subj).zfill(2)
+            for desc in desc_list:
+                # Flatten multi-tunnel descriptors if needed
+                if isinstance(desc, list):
+                    flat = [np.asarray(d).ravel() for d in desc]
+                    desc_vec = np.mean(np.vstack(flat), axis=0)
+                else:
+                    desc_vec = np.asarray(desc).ravel()
+
+                if subj in GALLERY_SUBJECTS:
+                    gallery_descs.append(desc_vec)
+                elif subj in PROBE_SUBJECTS:
+                    probe_descs.append(desc_vec)
+
+    # Sanity checks
+    if not gallery_descs or not probe_descs:
+        tqdm.write(f"[WARN] Insufficient data for multi-gesture EER ({variant}).")
+        return None
+
+    tqdm.write(f"[INFO] {variant}: Using {len(gallery_descs)} gallery and {len(probe_descs)} probe descriptors.")
+
+    # -----------------------------
+    # Step 2 — Build universal gallery template (mean over all gestures & subjects)
+    # -----------------------------
+    gallery_template = np.mean(np.vstack(gallery_descs), axis=0)
+
+    # -----------------------------
+    # Step 3 — Compute scores
+    # -----------------------------
+    genuine_scores, impostor_scores = [], []
+
+    # Genuine = similarity between universal gallery and each gallery descriptor
+    for desc in gallery_descs:
+        sim = 1 - cosine_distances(desc.reshape(1, -1), gallery_template.reshape(1, -1))[0, 0]
+        genuine_scores.append(sim)
+
+    # Impostor = similarity between universal gallery and each probe descriptor
+    for desc in probe_descs:
+        sim = 1 - cosine_distances(desc.reshape(1, -1), gallery_template.reshape(1, -1))[0, 0]
+        impostor_scores.append(sim)
+
+    # Sanity check
+    tqdm.write(f"[INFO] Genuine={len(genuine_scores)}, Impostor={len(impostor_scores)}")
+
+    # -----------------------------
+    # Step 4 — Compute and log EER
+    # -----------------------------
+    eer_stats = get_eer_stats(genuine_scores, impostor_scores)
+    eer = eer_stats.eer
+    tqdm.write(f"[RESULT] Multi-Gesture Enrollment ({variant}) EER: {eer:.4f}")
+
+    # Save visualization
+    plt.figure(figsize=(6, 4))
+    plt.hist(genuine_scores, bins=50, alpha=0.6, label="Genuine", density=True)
+    plt.hist(impostor_scores, bins=50, alpha=0.6, label="Impostor", density=True)
+    plt.xlabel("Cosine Similarity")
+    plt.ylabel("Density")
+    plt.legend()
+    plt.title(f"Multi-Gesture Enrollment ({variant}) EER={eer:.3f}")
+    plt.tight_layout()
+    plt.savefig(os.path.join(variant_dir, "multi_gesture_hist.png"), dpi=200)
+    plt.close()
+
+    # Save result
+    with open(save_path, "w") as f:
+        f.write(f"Variant: {variant}\n")
+        f.write(f"Multi-Gesture Enrollment EER: {eer:.4f}\n")
+
+    return eer
 
 
 # -----------------------
@@ -369,6 +459,7 @@ if __name__ == "__main__":
         gesture_map = build_per_gesture_map(results, variant)
         compute_eer_and_plot(gesture_map, variant)
         compute_gesture_eer_matrix(gesture_map, variant)
+        compute_multi_gesture_enrollment_eer(gesture_map, variant)
 
     tqdm.write(f"\nAll results stored in '{RESULTS_DIR}' directory.\n")
     

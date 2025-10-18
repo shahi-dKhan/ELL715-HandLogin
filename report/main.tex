@@ -209,6 +209,8 @@ This representation captures how feature correlations evolve over time while rem
 \end{table}
 
 
+The histograms can be seen in the results/TemporalHierarchy/ folder, and also the Figure \ref{fig:ablation_temporal_hierarchy} and the following figures.
+
 \subsection{Hand-Morphology:}
 
 For each sub-silhouette, a separate feature matrix $F_k \in \mathbb{R}^{14 \times N_k}$ is computed, following the same 14-dimensional feature representation used for the full silhouette.  
@@ -553,6 +555,251 @@ We have considered three scenerios for the ablation study, which includes; Basel
         \hline
     \end{tabular}
 \end{table}
+
+
+\subsection{Impact of different gestures, and intra and inter-gesture matching:}
+
+
+\subsubsection{Comparison of Inter-Gesture and Intra-Gesture Mappings:}
+%@ copilot, you can make three figures side by side for the three variants: Baseline, Temporal Hierarchy and Hand Morphology
+\textbf{Intra-Gesture Matching:} This involves comparing samples of the same gesture type to evaluate consistency within that gesture. For example, comparing different instances of the "Compass" gesture to see how similar they are to each other.\\
+\textbf{Inter-Gesture Matching:} This involves comparing samples of different gesture types to assess how distinct each gesture is from the others. For example, comparing "Compass" gestures against "Piano" gestures to evaluate their separability.\\
+\textbf{EER Matrices:} The matrix consists of EER values where each entry $(i, j)$ represents the EER when comparing gesture type $i$ against gesture type $j$. The diagonal entries represent intra-gesture EERs (same gesture comparisons), while the off-diagonal entries represent inter-gesture EERs (different gesture comparisons).\\
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/Baseline/eer_matrix.png}
+        \caption{Baseline}
+        \label{fig:gesture_eer_baseline}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/TemporalHierarchy/eer_matrix.png}
+        \caption{Temporal Hierarchy}
+        \label{fig:gesture_eer_temporal_hierarchy}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../results/AdditionalTunnels/eer_matrix.png}
+        \caption{Hand Morphology}
+        \label{fig:gesture_eer_hand_morphology}
+    \end{subfigure}
+
+    \caption{Gesture EER Matrices for Different Variants}
+    \label{fig:gesture_eer_matrices_all_variants}
+\end{figure}
+
+
+% @copilot, can you also write the above things in table, the data can be found in the eer_matrix.csv files in the respective results folders
+% It has to be per variant: Baseline, Temporal Hierarchy and Hand Morphology, so three tables in total
+
+\begin{table}[H]
+    \centering
+    \caption{Gesture EER Matrix - Baseline}
+    \label{tab:gesture_eer_baseline}
+    \begin{tabular}{lcccc}
+        \hline
+        & Compass & Piano & Push & UCDO \\
+        \hline
+        Compass & 0.28 & 0.46 & 0.44 & 0.43 \\
+        Piano   & 0.49 & 0.31 & 0.42 & 0.36 \\
+        Push    & 0.44 & 0.42 & 0.28 & 0.40 \\
+        UCDO    & 0.47 & 0.38 & 0.42 & 0.30 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \caption{Gesture EER Matrix - Temporal Hierarchy}
+    \label{tab:gesture_eer_temporal_hierarchy}
+    \begin{tabular}{lcccc}
+        \hline
+        & Compass & Piano & Push & UCDO \\
+        \hline
+        Compass & 0.29 & 0.43 & 0.47 & 0.42 \\
+        Piano   & 0.48 & 0.30 & 0.42 & 0.36 \\
+        Push    & 0.47 & 0.43 & 0.28 & 0.38 \\
+        UCDO    & 0.46 & 0.40 & 0.43 & 0.26 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \caption{Gesture EER Matrix - Hand Morphology}
+    \label{tab:gesture_eer_hand_morphology}
+    \begin{tabular}{lcccc}
+        \hline
+        & Compass & Piano & Push & UCDO \\
+        \hline
+        Compass & 0.20 & 0.38 & 0.43 & 0.32 \\
+        Piano   & 0.35 & 0.30 & 0.40 & 0.33 \\
+        Push    & 0.39 & 0.40 & 0.29 & 0.38 \\
+        UCDO    & 0.29 & 0.35 & 0.39 & 0.20 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+To analyze the influence of gesture type on authentication performance, both \textbf{intra-gesture} and \textbf{inter-gesture} evaluations were conducted.
+Let $G_i$ denote a \textit{gallery gesture} and $G_j$ denote a \textit{probe gesture}, where $i, j \in \{1, 2, 3, 4\}$ correspond to the gestures \{Compass, Piano, Push, UCDO\}.
+
+\noindent
+The evaluation protocol proceeds as follows:
+
+\begin{enumerate}[label=\textbf{Step \arabic*:}]
+    \item \textbf{Gallery Construction:} For each gesture $G_i$, a gallery template is created for every enrolled subject ($s_g \in \{01,\dots,08\}$) by averaging the descriptors of all available trials:
+    \[
+        \mathbf{D}^{(i)}_{\text{gallery}, s_g} = \frac{1}{N_i} \sum_{k=1}^{N_i} \mathbf{d}^{(i,k)}_{s_g}
+    \]
+    where $\mathbf{d}^{(i,k)}_{s_g}$ represents the $k$-th descriptor for gesture $G_i$ of subject $s_g$. Note that this is different from the protocol followed above, where only one sample was used at a time for gallery, and all the combinations were considered while computing genuine and impostor scores. 
+
+    \item \textbf{Probe Samples:} Probe samples are taken from subjects $s_p \in \{09,\dots,16\}$ performing gesture $G_j$. Each probe descriptor is denoted $\mathbf{d}^{(j,m)}_{s_p}$.
+
+    \item \textbf{Score Computation:} For every gallery–probe pair, the cosine similarity is computed as:
+    \[
+        \text{sim}\left(\mathbf{D}^{(i)}_{\text{gallery}, s_g}, \mathbf{d}^{(j,m)}_{s_p}\right)
+        = 1 - \text{cosine\_distance}\left(\mathbf{D}^{(i)}_{\text{gallery}, s_g}, \mathbf{d}^{(j,m)}_{s_p}\right)
+    \]
+    Genuine and impostor scores are defined as:
+    \[
+        \begin{cases}
+        s_g = s_p, & \text{Genuine scores (same subject)}\\
+        s_g \neq s_p, & \text{Impostor scores (different subjects)}
+        \end{cases}
+    \]
+
+    \item \textbf{EER Computation:} For each gesture pair $(G_i, G_j)$, the Equal Error Rate (EER) is computed from the genuine and impostor score distributions.
+    \begin{itemize}
+        \item $i = j$: \textit{Intra-gesture EER} — same gesture for gallery and probe.
+        \item $i \neq j$: \textit{Inter-gesture EER} — different gestures for gallery and probe.
+    \end{itemize}
+
+    \item \textbf{Gesture EER Matrix:} The process yields a $4 \times 4$ EER matrix:
+    \[
+        \text{EER}_{i,j} = f(G_i, G_j)
+    \]
+    where diagonal elements ($i=j$) represent intra-gesture performance, and off-diagonal elements ($i \neq j$) measure inter-gesture confusion.
+
+\end{enumerate}
+
+
+\noindent
+Several patterns, trennds and observations that appear from the aove results are:
+
+\vspace{4pt}
+\noindent
+\textbf{1. Same-gesture matching is better.} \\
+Diagonal entries of the EER matrices (intra-gesture) are substantially lower than the off-diagonal ones. 
+This indicates that when the same gesture is used during both enrollment and testing, authentication accuracy is high. 
+In contrast, cross-gesture (inter-gesture) matching produces significantly higher EERs, confirming that the descriptors are strongly gesture-sensitive.
+
+\vspace{4pt}
+\noindent
+\textbf{2. Hand morphology improves performance.} \\
+The inclusion of sub-silhouette tunnels (morphological features) provides the largest reduction in diagonal EERs for certain gestures—particularly \textit{Compass} and \textit{UCDO}. 
+This suggests that morphology-based cues (hand shape and structural consistency) add stability and complement the temporal-motion information in the descriptor.
+
+\vspace{4pt}
+\noindent
+\textbf{3. Temporal hierarchy gives modest gains.} \\
+Dividing a gesture into temporal segments captures the dynamic structure of motion and yields small improvements in some gestures. 
+However, the overall effect is less pronounced than the morphology-based approach, indicating that temporal segmentation alone cannot fully model gesture variability.
+
+\vspace{4pt}
+\noindent
+\textbf{4. Inter-gesture confusion remains high.} \\
+Off-diagonal EER values remain elevated across all variants. 
+This indicates that descriptors trained for one gesture do not generalize well to other gestures. 
+In other words, the system is not gesture-agnostic and relies on users performing the same gesture during both enrollment and authentication.
+
+
+\textbf{It is also observed that Compass and UCDO gestures perform better than Piano and Push gestures.} This could be due to the distinct hand shapes and motion patterns involved in Compass and UCDO, which are better captured by the morphology features. In contrast, Piano and Push gestures may involve more subtle or similar hand configurations, leading to higher confusion rates. \\
+
+
+\noindent
+\textbf{Will this system work for random hand gestures?} \\
+\textit{Not really.} The observed results indicate that the descriptors we are using are gesture-dependent and requires consistent gestures for authentication. This will be further proved in an experiment which is mentioned next. But the current results indicate:
+
+
+\begin{itemize}
+    \item \textbf{Gesture dependency:} The feature representation includes spatial coordinates $(x, y, t)$, depth, and temporal run-lengths. These are strongly tied to the motion and dynamics of specific gestures. Random gestures will produce different patterns that do not match enrolled templates.
+    \item \textbf{High inter-gesture EERs:} The elevated off-diagonal EERs ($0.35$–$0.50$ range) confirm that cross-gesture matching yields poor authentication accuracy.
+\end{itemize}
+
+\subsection{Experiment 2: Multi-Gesture Enrollment Authentication}
+
+\subsubsection*{Objective}
+We try to analyze if a multi-gesture enrollment strategy can
+improve performance compared to single-gesture enrollment. \\
+Instead of enrolling each user with a single gesture, we construct a universal
+gallery template by averaging feature descriptors from multiple gestures performed by
+the gallery subjects. Probe samples are then drawn from all gestures of probe subjects.
+
+\subsubsection*{Methodology}
+For each variant (\textit{Baseline}, \textit{Temporal Hierarchy}, and \textit{Hand Morphology}),
+the following protocol was used:
+\begin{enumerate}
+    \item Average all descriptors from all gallery subjects (\(1 \text{–} 8\)) across all gestures.
+    \item A \textbf{universal gallery template} formed by averaging all gallery descriptors:
+    \[
+        \bar{C}_{gallery} = \frac{1}{N_G} \sum_{i=1}^{N_G} C_i
+    \]
+    where \(C_i\) represents the descriptor vector from the $i$-th gallery sample.
+    \item Each probe descriptor from probe subjects (\(9 \text{–} 16\)) was compared against
+          the universal template using cosine similarity.
+    \item Genuine scores were obtained from gallery descriptors (same population as enrolled users),
+          while impostor scores were obtained from probe descriptors (unseen subjects).
+    \item The Equal Error Rate (EER) was computed from the two distributions.
+\end{enumerate}
+
+\subsubsection*{Results}
+A summary of the multi-gesture enrollment performance for all three variants is shown below.
+
+\begin{table}[H]
+    \centering
+    \caption{Multi-Gesture Enrollment EER for Each Variant}
+    \label{tab:multi_gesture_eer}
+    \begin{tabular}{lcc}
+        \hline
+        \textbf{Variant} & \textbf{EER (\%)} & \textbf{Remarks} \\
+        \hline
+        Baseline & 0.27 & Gesture-specific covariance only \\
+        Temporal Hierarchy & 0.23 & Captures temporal structure across segments \\
+        Hand Morphology (Additional Tunnels) & 0.20 & Adds sub-silhouette morphology cues \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection*{Interpretation}
+The results show that multi-gesture enrollment improves the overall system reliability.
+By averaging across gestures, the universal template becomes less sensitive to
+gesture-specific dynamics and captures more stable, user-specific hand traits.
+
+\begin{itemize}
+    \item The \textbf{Hand Morphology} variant achieved the lowest EER (0.20), indicating
+    that sub-silhouette cues provide complementary, gesture-invariant information.
+    \item The \textbf{Temporal Hierarchy} variant improved over the Baseline
+    by modeling dynamic consistency across temporal segments.
+    \item The \textbf{Baseline} variant, which relies solely on covariance of full-silhouette features,
+    remained the most gesture-dependent and hence less generalizable.
+\end{itemize}
+
+\subsubsection*{Conclusion}
+This experiment demonstrates that aggregating feature descriptors from multiple gestures
+can produce a more robust enrollment representation.
+However, while the average template reduces gesture sensitivity,
+inter-gesture variability remains significant, suggesting that morphology-based
+features (such as sub-silhouette representations) are more effective for
+gesture-invariant user authentication.
+
 
 % =================================================
 

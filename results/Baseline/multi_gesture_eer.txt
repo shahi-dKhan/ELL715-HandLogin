@@ -1,0 +1,2 @@
+Variant: Baseline
+Multi-Gesture Enrollment EER: 0.4906

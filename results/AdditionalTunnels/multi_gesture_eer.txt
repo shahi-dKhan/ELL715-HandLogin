@@ -1,0 +1,2 @@
+Variant: AdditionalTunnels
+Multi-Gesture Enrollment EER: 0.5094

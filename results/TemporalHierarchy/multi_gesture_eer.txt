@@ -1,0 +1,2 @@
+Variant: TemporalHierarchy
+Multi-Gesture Enrollment EER: 0.5062

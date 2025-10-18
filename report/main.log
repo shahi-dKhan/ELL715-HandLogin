@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.26)  18 OCT 2025 19:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.26)  18 OCT 2025 21:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -813,32 +813,32 @@ Package hyperref Info: Link coloring ON on input line 5.
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-<../ell715_assg4/01/Compass/Test001/LSB/LSB2.png, id=31, 385.44pt x 319.1925pt>
+<../ell715_assg4/01/Compass/Test001/LSB/LSB2.png, id=43, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/Compass/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/Compass/Test001/LSB/LSB2.png>
 Package pdftex.def Info: ../ell715_assg4/01/Compass/Test001/LSB/LSB2.png  used on input line 34.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png, id=33, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png, id=45, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png>
 Package pdftex.def Info: ../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png  used on input line 41.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../ell715_assg4/01/Piano/Test001/LSB/LSB2.png, id=34, 385.44pt x 319.1925pt>
+<../ell715_assg4/01/Piano/Test001/LSB/LSB2.png, id=46, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/Piano/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/Piano/Test001/LSB/LSB2.png>
 Package pdftex.def Info: ../ell715_assg4/01/Piano/Test001/LSB/LSB2.png  used on input line 54.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png, id=35, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png, id=47, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png>
 Package pdftex.def Info: ../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png  used on input line 61.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../ell715_assg4/01/Push/Test001/LSB/LSB2.png, id=36, 385.44pt x 319.1925pt>
+<../ell715_assg4/01/Push/Test001/LSB/LSB2.png, id=48, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/Push/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/Push/Test001/LSB/LSB2.png>
 Package pdftex.def Info: ../ell715_assg4/01/Push/Test001/LSB/LSB2.png  used on input line 73.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png, id=37, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png, id=49, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png>
 Package pdftex.def Info: ../results_prev/silhouettes/01/Push/Test001/Silhouette_001.png  used on input line 80.
@@ -846,12 +846,12 @@ Package pdftex.def Info: ../results_prev/silhouettes/01/Push/Test001/Silhouette_
  [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../ell715_assg4/01/Compass/Test001/LSB/LSB2.png> <../results_prev/silhouettes/01/Compass/Test001/Silhouette_001.png (PNG copy)> <../ell715_assg4/01/Piano/Test001/LSB/LSB2.png> <../results_prev/silhouettes/01/Piano/Test001/Silhouette_001.png (PNG copy)>]
-<../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png, id=53, 385.44pt x 319.1925pt>
+<../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png, id=65, 385.44pt x 319.1925pt>
 File: ../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png Graphic file (type png)
 <use ../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png>
 Package pdftex.def Info: ../ell715_assg4/01/UCDO/Test001/LSB/LSB2.png  used on input line 93.
 (pdftex.def)             Requested size: 187.89914pt x 155.60205pt.
-<../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png, id=54, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png, id=66, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png>
 Package pdftex.def Info: ../results_prev/silhouettes/01/UCDO/Test001/Silhouette_001.png  used on input line 100.
@@ -877,178 +877,215 @@ Underfull \hbox (badness 10000) in paragraph at lines 189--191
  []
 
 [3]
-<../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png, id=75, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png, id=88, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png  used on input line 235.
+Package pdftex.def Info: ../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png  used on input line 237.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png, id=76, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png, id=89, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png  used on input line 245.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png  used on input line 247.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png, id=77, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png, id=90, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png  used on input line 255.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png  used on input line 257.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png, id=78, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png, id=91, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png  used on input line 265.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png  used on input line 267.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png, id=79, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png, id=92, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png  used on input line 281.
+Package pdftex.def Info: ../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png  used on input line 283.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png, id=80, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png, id=93, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png  used on input line 291.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png  used on input line 293.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png, id=81, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png, id=94, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png  used on input line 301.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png  used on input line 303.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png, id=82, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png, id=95, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png  used on input line 311.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png  used on input line 313.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
  [4 <../results_prev/silhouettes/02/Compass/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Compass/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Compass/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Compass/Test001/sub3/frame_001.png (PNG copy)>]
-<../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png, id=90, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png, id=104, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png  used on input line 328.
+Package pdftex.def Info: ../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png  used on input line 330.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png, id=91, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png, id=105, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png  used on input line 338.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png  used on input line 340.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png, id=92, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png, id=106, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png  used on input line 348.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png  used on input line 350.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png, id=93, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png, id=107, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png  used on input line 358.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png  used on input line 360.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png, id=94, 513.92pt x 425.59pt>
+<../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png, id=108, 513.92pt x 425.59pt>
 File: ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png Graphic file (type png)
 <use ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png>
-Package pdftex.def Info: ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png  used on input line 373.
+Package pdftex.def Info: ../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png  used on input line 375.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png, id=95, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png, id=109, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png  used on input line 383.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png  used on input line 385.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png, id=96, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png, id=110, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png  used on input line 393.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png  used on input line 395.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
-<../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png, id=97, 513.92pt x 425.59pt>
+<../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png, id=111, 513.92pt x 425.59pt>
 File: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png Graphic file (type png)
 <use ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png>
-Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png  used on input line 403.
+Package pdftex.def Info: ../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png  used on input line 405.
 (pdftex.def)             Requested size: 93.94957pt x 77.79778pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
 
  []
 
-<../results/Baseline/Compass_hist.png, id=98, 433.62pt x 289.08pt>
+<../results/Baseline/Compass_hist.png, id=112, 433.62pt x 289.08pt>
 File: ../results/Baseline/Compass_hist.png Graphic file (type png)
 <use ../results/Baseline/Compass_hist.png>
-Package pdftex.def Info: ../results/Baseline/Compass_hist.png  used on input line 435.
+Package pdftex.def Info: ../results/Baseline/Compass_hist.png  used on input line 437.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/Compass_hist.png, id=99, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/Compass_hist.png, id=113, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/Compass_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/Compass_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/Compass_hist.png  used on input line 442.
+Package pdftex.def Info: ../results/TemporalHierarchy/Compass_hist.png  used on input line 444.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/Compass_hist.png, id=100, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/Compass_hist.png, id=114, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/Compass_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/Compass_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/Compass_hist.png  used on input line 449.
+Package pdftex.def Info: ../results/AdditionalTunnels/Compass_hist.png  used on input line 451.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
 [5 <../results_prev/silhouettes/02/Piano/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Piano/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Piano/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Piano/Test001/sub3/frame_001.png (PNG copy)> <../results_prev/silhouettes/02/Push/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Push/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Push/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/Push/Test001/sub3/frame_001.png (PNG copy)> <../results_prev/silhouettes/02/UCDO/Test001/Silhouette_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/UCDO/Test001/sub1/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/UCDO/Test001/sub2/frame_001.png (PNG copy)> <../results_prev/sub_silhouettes/02/UCDO/Test001/sub3/frame_001.png (PNG copy)>]
-<../results/Baseline/Piano_hist.png, id=108, 433.62pt x 289.08pt>
+<../results/Baseline/Piano_hist.png, id=122, 433.62pt x 289.08pt>
 File: ../results/Baseline/Piano_hist.png Graphic file (type png)
 <use ../results/Baseline/Piano_hist.png>
-Package pdftex.def Info: ../results/Baseline/Piano_hist.png  used on input line 464.
+Package pdftex.def Info: ../results/Baseline/Piano_hist.png  used on input line 466.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/Piano_hist.png, id=109, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/Piano_hist.png, id=123, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/Piano_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/Piano_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/Piano_hist.png  used on input line 471.
+Package pdftex.def Info: ../results/TemporalHierarchy/Piano_hist.png  used on input line 473.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/Piano_hist.png, id=110, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/Piano_hist.png, id=124, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/Piano_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/Piano_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/Piano_hist.png  used on input line 478.
+Package pdftex.def Info: ../results/AdditionalTunnels/Piano_hist.png  used on input line 480.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/Baseline/Push_hist.png, id=111, 433.62pt x 289.08pt>
+<../results/Baseline/Push_hist.png, id=125, 433.62pt x 289.08pt>
 File: ../results/Baseline/Push_hist.png Graphic file (type png)
 <use ../results/Baseline/Push_hist.png>
-Package pdftex.def Info: ../results/Baseline/Push_hist.png  used on input line 491.
+Package pdftex.def Info: ../results/Baseline/Push_hist.png  used on input line 493.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/Push_hist.png, id=112, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/Push_hist.png, id=126, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/Push_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/Push_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/Push_hist.png  used on input line 498.
+Package pdftex.def Info: ../results/TemporalHierarchy/Push_hist.png  used on input line 500.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/Push_hist.png, id=113, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/Push_hist.png, id=127, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/Push_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/Push_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/Push_hist.png  used on input line 505.
+Package pdftex.def Info: ../results/AdditionalTunnels/Push_hist.png  used on input line 507.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/Baseline/UCDO_hist.png, id=114, 433.62pt x 289.08pt>
+<../results/Baseline/UCDO_hist.png, id=128, 433.62pt x 289.08pt>
 File: ../results/Baseline/UCDO_hist.png Graphic file (type png)
 <use ../results/Baseline/UCDO_hist.png>
-Package pdftex.def Info: ../results/Baseline/UCDO_hist.png  used on input line 518.
+Package pdftex.def Info: ../results/Baseline/UCDO_hist.png  used on input line 520.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/TemporalHierarchy/UCDO_hist.png, id=115, 433.62pt x 289.08pt>
+<../results/TemporalHierarchy/UCDO_hist.png, id=129, 433.62pt x 289.08pt>
 File: ../results/TemporalHierarchy/UCDO_hist.png Graphic file (type png)
 <use ../results/TemporalHierarchy/UCDO_hist.png>
-Package pdftex.def Info: ../results/TemporalHierarchy/UCDO_hist.png  used on input line 525.
+Package pdftex.def Info: ../results/TemporalHierarchy/UCDO_hist.png  used on input line 527.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
-<../results/AdditionalTunnels/UCDO_hist.png, id=116, 433.62pt x 289.08pt>
+<../results/AdditionalTunnels/UCDO_hist.png, id=130, 433.62pt x 289.08pt>
 File: ../results/AdditionalTunnels/UCDO_hist.png Graphic file (type png)
 <use ../results/AdditionalTunnels/UCDO_hist.png>
-Package pdftex.def Info: ../results/AdditionalTunnels/UCDO_hist.png  used on input line 532.
+Package pdftex.def Info: ../results/AdditionalTunnels/UCDO_hist.png  used on input line 534.
 (pdftex.def)             Requested size: 140.92793pt x 93.94987pt.
- [6 <../results/Baseline/Compass_hist.png> <../results/TemporalHierarchy/Compass_hist.png> <../results/AdditionalTunnels/Compass_hist.png> <../results/Baseline/Piano_hist.png> <../results/TemporalHierarchy/Piano_hist.png> <../results/AdditionalTunnels/Piano_hist.png> <../results/Baseline/Push_hist.png> <../results/TemporalHierarchy/Push_hist.png> <../results/AdditionalTunnels/Push_hist.png> <../results/Baseline/UCDO_hist.png> <../results/TemporalHierarchy/UCDO_hist.png> <../results/AdditionalTunnels/UCDO_hist.png>] (./main.bbl
+ [6 <../results/Baseline/Compass_hist.png> <../results/TemporalHierarchy/Compass_hist.png> <../results/AdditionalTunnels/Compass_hist.png> <../results/Baseline/Piano_hist.png> <../results/TemporalHierarchy/Piano_hist.png> <../results/AdditionalTunnels/Piano_hist.png> <../results/Baseline/Push_hist.png> <../results/TemporalHierarchy/Push_hist.png> <../results/AdditionalTunnels/Push_hist.png> <../results/Baseline/UCDO_hist.png> <../results/TemporalHierarchy/UCDO_hist.png> <../results/AdditionalTunnels/UCDO_hist.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 565--568
+
+ []
+
+<../results/Baseline/eer_matrix.png, id=150, 433.62pt x 361.35pt>
+File: ../results/Baseline/eer_matrix.png Graphic file (type png)
+<use ../results/Baseline/eer_matrix.png>
+Package pdftex.def Info: ../results/Baseline/eer_matrix.png  used on input line 574.
+(pdftex.def)             Requested size: 140.92793pt x 117.43735pt.
+<../results/TemporalHierarchy/eer_matrix.png, id=151, 433.62pt x 361.35pt>
+File: ../results/TemporalHierarchy/eer_matrix.png Graphic file (type png)
+<use ../results/TemporalHierarchy/eer_matrix.png>
+Package pdftex.def Info: ../results/TemporalHierarchy/eer_matrix.png  used on input line 581.
+(pdftex.def)             Requested size: 140.92793pt x 117.43735pt.
+<../results/AdditionalTunnels/eer_matrix.png, id=152, 433.62pt x 361.35pt>
+File: ../results/AdditionalTunnels/eer_matrix.png Graphic file (type png)
+<use ../results/AdditionalTunnels/eer_matrix.png>
+Package pdftex.def Info: ../results/AdditionalTunnels/eer_matrix.png  used on input line 588.
+(pdftex.def)             Requested size: 140.92793pt x 117.43735pt.
+[7 <../results/Baseline/eer_matrix.png> <../results/TemporalHierarchy/eer_matrix.png> <../results/AdditionalTunnels/eer_matrix.png>]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 652.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 652.
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 724--725
+
+ []
+
+[9]
+Overfull \hbox (23.39244pt too wide) in paragraph at lines 770--779
+ [][] 
+ []
+
+[10] (./main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
-) [7] (./main.aux)
+) [11] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 61AEF655E75FE3B2C5661932BAF4ED76;1194.
+(rerunfilecheck)             Checksum: 441FB101AB8BAEBD5C8B537200BCB3FB;2301.
  ) 
 Here is how much of TeX's memory you used:
- 30443 strings out of 474116
- 608355 string characters out of 5743681
- 1940187 words of memory out of 5000000
- 52283 multiletter control sequences out of 15000+600000
- 568007 words of font info for 75 fonts, out of 8000000 for 9000
+ 30534 strings out of 474116
+ 610638 string characters out of 5743681
+ 1941187 words of memory out of 5000000
+ 52348 multiletter control sequences out of 15000+600000
+ 568353 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 106i,8n,110p,622b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (7 pages, 1170955 bytes).
+ 106i,9n,110p,622b,651s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on main.pdf (11 pages, 1405991 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 280 words of extra memory for PDF output out of 10000 (max. 10000000)
 
