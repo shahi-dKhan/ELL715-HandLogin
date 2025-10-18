@@ -1,0 +1,4 @@
+Gesture: Compass | EER: 0.0030
+Gesture: Piano | EER: 0.0063
+Gesture: UCDO | EER: 0.0003
+Gesture: Push | EER: 0.0043
