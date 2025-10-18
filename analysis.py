@@ -51,10 +51,8 @@ def _cache_dir_for(subject, gesture, test_folder=None):
 
 
 def _load_npz_safe(path, key=None):
-    # helper returning data[key] if key given, else returns the whole archive mapping
     with np.load(path, allow_pickle=True) as data:
         if key is None:
-            # return mapping-like object; convert to dict to avoid closed file reference
             return {k: data[k] for k in data.files}
         return data[key].copy()
 
@@ -66,8 +64,17 @@ def _load_npz_safe(path, key=None):
 # -----------------------
 def compute_descriptors_variant(depth_frames, background, variant, subject, gesture, test_folder, K=SUB_TUNNEL_K):
     """
-    Computes gesture descriptors (Baseline, TemporalHierarchy, AdditionalTunnels, FirstFrame)
-    and caches them. Also saves silhouette masks as PNGs for visualization.
+    Args: 
+        depth_frames: (T, H, W) array of depth frames
+        background: (H, W) array of background depth
+        variant: descriptor variant to compute
+        subject: subject ID
+        gesture: gesture name
+        test_folder: test folder name
+        K: number of sub-silhouette bins
+        Returns:
+            descriptor: computed descriptor array for the given variant
+            Shape = (105,) for Baseline, (735,) for TemporalHierarchy, (735,4) for AdditionalTunnels
     """
 
     if depth_frames.size == 0:
@@ -78,7 +85,7 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
     # ----- 1) Check if final descriptor is already cached -----
     final_desc_path = os.path.join(desc_dir, f"descriptor_{variant}.npz")
     if os.path.exists(final_desc_path):
-        # tqdm.write(f"[CACHE] Found cached final descriptor for {variant}, Subject-{subject}, Gesture-{gesture}")
+        tqdm.write(f"[CACHE] Found cached final descriptor for {variant}, Subject-{subject}, Gesture-{gesture}")
         with np.load(final_desc_path, allow_pickle=True) as data:
             return data["descriptor"]
 
@@ -91,10 +98,10 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
 
     if variant in ["Baseline", "TemporalHierarchy", "FirstFrame"]:
         if os.path.exists(frame_desc_path):
-            # tqdm.write(f"[CACHE] Found per-frame descriptors for {subject}-{gesture}-{test_folder}")
+            tqdm.write(f"[CACHE] Found per-frame descriptors for {subject}-{gesture}-{test_folder}")
             frame_descriptors = _load_npz_safe(frame_desc_path, "frame_descriptors")
         else:
-            # tqdm.write(f"[EXTRACT] Computing per-frame descriptors (silhouette_tunnel) for {subject}-{gesture}-{test_folder}")
+            tqdm.write(f"[EXTRACT] Computing per-frame descriptors (silhouette_tunnel) for {subject}-{gesture}-{test_folder}")
             frame_descriptors, masks = silhouette_tunnel(depth_frames, background, threshold=THRESHOLD)
 
             # tqdm.write(f"[DEBUG] {subject}-{gesture}-{test_folder}: silhouette mean={np.mean(frame_descriptors):.4f}, "
@@ -126,11 +133,6 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
         if frame_descriptors.shape[0] != 14:
             tqdm.write(f"[WARN] Transposing frame_descriptors from {frame_descriptors.shape}")
             frame_descriptors = frame_descriptors.T
-
-        # mu = np.mean(frame_descriptors, axis=1, keepdims=True)
-        # F_centered = frame_descriptors - mu
-        # C = (F_centered @ F_centered.T) / frame_descriptors.shape[1]
-        # descriptor = C[np.triu_indices_from(C)].astype(np.float32)'
         C = np.cov(frame_descriptors)
         descriptor = C[np.triu_indices_from(C)].astype(np.float32)
 
@@ -159,7 +161,6 @@ def compute_descriptors_variant(depth_frames, background, variant, subject, gest
     else:
         raise ValueError(f"Unknown variant: {variant}")
 
-    # 5️⃣ Cache final descriptor
     np.savez_compressed(final_desc_path, descriptor=descriptor)
     # tqdm.write(f"[SAVED] Cached final descriptor for {variant}, {subject}-{gesture}-{test_folder}")
 
@@ -282,6 +283,82 @@ def compute_eer_and_plot(per_gesture_map, variant):
     with open(SUMMARY_LOG, "a") as f:
         f.writelines(log_lines)
 
+
+
+
+def compute_gesture_eer_matrix(per_gesture_map, variant):
+    gestures = sorted(per_gesture_map.keys())  # e.g. ["Compass", "Piano", "Push", "UCDO"]
+    n = len(gestures)
+    eer_matrix = np.full((n, n), np.nan, dtype=np.float32)
+
+    variant_dir = os.path.join(RESULTS_DIR, variant)
+    os.makedirs(variant_dir, exist_ok=True)
+    save_csv = os.path.join(variant_dir, "eer_matrix.csv")
+
+    tqdm.write(f"[INFO] Computing inter/intra gesture EER matrix for {variant} ...")
+
+    for i, gallery_gesture in enumerate(gestures):
+        for j, probe_gesture in enumerate(gestures):
+            genuine_scores, impostor_scores = [], []
+
+            gallery_map = per_gesture_map[gallery_gesture]
+            probe_map = per_gesture_map[probe_gesture]
+
+            for subj_i in probe_map.keys():
+                for subj_j in gallery_map.keys():
+                    for desc_i in probe_map[subj_i]:
+                        for desc_j in gallery_map[subj_j]:
+
+                            if isinstance(desc_i, list) and isinstance(desc_j, list):
+                                sims = [
+                                    1 - cosine_distances(di.reshape(1, -1), dj.reshape(1, -1))[0, 0]
+                                    for di, dj in zip(desc_i, desc_j)
+                                ]
+                                sim = np.mean(sims)
+                            else:
+                                sim = 1 - cosine_distances(
+                                    np.asarray(desc_i).reshape(1, -1),
+                                    np.asarray(desc_j).reshape(1, -1)
+                                )[0, 0]
+
+                            if subj_i == subj_j and subj_i in GALLERY_SUBJECTS:
+                                genuine_scores.append(sim)
+                            elif subj_i != subj_j and subj_i in PROBE_SUBJECTS and subj_j in GALLERY_SUBJECTS:
+                                impostor_scores.append(sim)
+
+            if not genuine_scores or not impostor_scores:
+                eer_matrix[i, j] = np.nan
+                tqdm.write(f"[WARN] No valid pairs for ({gallery_gesture}, {probe_gesture})")
+                continue
+
+            eer_stats = get_eer_stats(genuine_scores, impostor_scores)
+            eer_matrix[i, j] = eer_stats.eer
+
+            tqdm.write(f"[RESULT] {gallery_gesture} → {probe_gesture}: EER = {eer_stats.eer:.4f}")
+
+    np.savetxt(save_csv, eer_matrix, delimiter=",", fmt="%.4f")
+    tqdm.write(f"[SAVED] Gesture EER matrix saved at: {save_csv}")
+
+    plt.figure(figsize=(6, 5))
+    plt.imshow(eer_matrix, cmap="YlOrRd", interpolation="nearest")
+    plt.xticks(range(n), gestures, rotation=45)
+    plt.yticks(range(n), gestures)
+    plt.colorbar(label="EER")
+    for i in range(n):
+        for j in range(n):
+            if not np.isnan(eer_matrix[i, j]):
+                plt.text(j, i, f"{eer_matrix[i, j]:.2f}",
+                         ha="center", va="center", color="black", fontsize=9)
+    plt.title(f"Inter/Intra Gesture EER Matrix ({variant})")
+    plt.tight_layout()
+    plt.savefig(os.path.join(variant_dir, "eer_matrix.png"), dpi=200)
+    plt.close()
+
+    return gestures, eer_matrix
+
+
+
+
 # -----------------------
 # Main Execution
 # -----------------------
@@ -291,6 +368,7 @@ if __name__ == "__main__":
     for variant in ["Baseline", "TemporalHierarchy", "AdditionalTunnels"]:
         gesture_map = build_per_gesture_map(results, variant)
         compute_eer_and_plot(gesture_map, variant)
+        compute_gesture_eer_matrix(gesture_map, variant)
 
     tqdm.write(f"\nAll results stored in '{RESULTS_DIR}' directory.\n")
     
