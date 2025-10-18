@@ -2,11 +2,8 @@
 ### LEVERAGING SHAPE AND DEPTH IN USER AUTHENTICATION FROM IN-AIR HAND GESTURES
 
 ---
-📘 **GitHub Repository:** [https://github.com/shahidkhan-ai/hand-gesture-authentication](https://github.com/shahidkhan-ai/hand-gesture-authentication)
 
-# Hand Gesture Biometric Authentication using Silhouette Descriptors
-
-📘 **GitHub Repository:** [https://github.com/shahidkhan-ai/hand-gesture-authentication](https://github.com/shahidkhan-ai/hand-gesture-authentication)
+📘 **GitHub Repository:** [https://github.com/shahidkhan-ai/assignment](https://github.com/assignment)
 
 This repository implements a **gesture-based user authentication system** using depth data.
 Each gesture sequence is represented as a *temporal silhouette tunnel*, from which 14-dimensional
