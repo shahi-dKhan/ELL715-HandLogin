@@ -100,7 +100,6 @@ creates results/<Variant>/multi_gesture_hist.png → histogram of genuine/impost
 
 
 
-output structure 
 results/
 ├── Baseline/
 │   ├── Compass_hist.png
@@ -113,6 +112,7 @@ results/
 ├── ablation_results_*.npz
 ├── eer_matrix.csv
 └── summary.txt
+
 
 Note that our repository will include these files, from the test we have run on our system. If you clone the repository, and run the experiments on your own, these results will be overridden.
 
