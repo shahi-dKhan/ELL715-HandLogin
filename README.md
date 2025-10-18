@@ -3,7 +3,8 @@
 ### LEVERAGING SHAPE AND DEPTH IN USER AUTHENTICATION FROM IN-AIR HAND GESTURES  
 ---
 
-📘 **GitHub Repository:** [https://github.com/shahidkhan-ai/assignment](https://github.com/assignment)
+📘 **GitHub Repository:** [https://github.com/shahidkhan-ai/assignment](https://github.com/shahi-dKhan/ELL715-HandLogin)
+
 
 This repository implements a **gesture-based user authentication system** using depth data.  
 Each gesture sequence is represented as a *temporal silhouette tunnel*, from which 14-dimensional pixel-level features are extracted and converted into compact **covariance descriptors**.  
@@ -66,7 +67,7 @@ conda env create -f environment.yml
 | **Remove Environment** | `conda env remove -n image_proc_env` |
 
 **Put the dataset file in the same repository** which can be found at [dataset link](https://csciitd-my.sharepoint.com/personal/eez227536_iitd_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Feez227536%5Fiitd%5Fac%5Fin%2FDocuments&ga=1).  
-Unzip it and place it in the same directory where you run the code, or modify the path in `sanity_check_v2.py`.
+Unzip it and place it in the same directory where you run the code, or modify the path in the CONFIGs of file_loader.py and analyis.py.
 
 ---
 
@@ -90,10 +91,10 @@ This will:
 It creates an `eer_matrix.csv` file inside `results/variant/` showing **inter-gesture vs intra-gesture** authentication performance.  
 It also generates:
 
-```
 results/<Variant>/multi_gesture_hist.png
 results/<Variant>/multi_gesture_eer.txt
-```
+
+
 The folder `results_pca60/` holds the results for the **PCA + LDA solution**, which is part of the improvement strategy.  
 
 To reproduce these results, run:
@@ -154,3 +155,4 @@ results_pca60/
 Note:
 - The repository includes these files from our test runs. If you clone and rerun, results will be overridden.  
 - All descriptors are stored in the `results/` directory, which can become large — clean periodically if not needed.
+- Our version history before making this repository can be found at [link](https://github.com/shahi-dKhan/ELL715-Hand-Gesture-based-user-authentication)
